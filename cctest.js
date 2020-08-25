@@ -329,7 +329,7 @@ SK.update = () => {
     });
 
     let serialized = btoa(JSON.stringify(SK.goods));
-    SK.setCookie('SK_Data', serialized);
+    SK.setCookie('SK_Data', serialized,180);
 }
 
 SK.initializeGoods();
