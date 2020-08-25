@@ -297,26 +297,26 @@ SK.update = () => {
         SK.goods[id].formattedProfit = SK.formatPrice(SK.goods[id].profit, true);
         
         let ratio = (SK.goods[id].cur-SK.goods[id].low)/(SK.goods[id].high-SK.goods[id].low);
-        let bcur= "";
-        let acur= "";
+        let bcur= '';
+        let acur= '';
         if (ratio <0.2){
-            bcur="~~";
-            acur="<<";}
+            bcur='~~';
+            acur='<<';}
         else {
             if (ratio <0.4){
-                bcur="<";
-                acur="<<";}
+                bcur='<';
+                acur='<<';}
             else {
                 if (ratio <0.6){
-                    bcur="<";
-                    acur="<";}
+                    bcur='<';
+                    acur='<';}
                 else {
                     if (ratio <0.8){
-                        bcur="<<";
-                        acur="<";}
+                        bcur='<<';
+                        acur='<';}
                     else {
-                        bcur="<<";
-                        acur="~~";}
+                        bcur='<<';
+                        acur='~~';}
                     }
                 }
             }
