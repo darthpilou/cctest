@@ -316,7 +316,7 @@ SK.update = () => {
                         acur='<';}
                     else {
                         bcur='<<';
-                        acur='~~';}
+                        acur='~~';
                     }
                 }
             }
