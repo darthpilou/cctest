@@ -315,7 +315,7 @@ SK.update = () => {
                 acur=' ';
             }
         }
-        if (bought > 0 &&  SK.goods[id].value > SK.goods[id].cur+10)
+        if (bought > 0 &&  SK.goods[id].cur > SK.goods[id].value+10)
             opac = 1;
         
         let row = table.querySelector(`#SK-${id}`);
