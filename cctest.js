@@ -338,7 +338,6 @@ SK.minigameGoods.map((good, id) => {
     let buy = (bought) => {
         SK.goods[id].bought = bought;
         SK.goods[id].value = bought == 0 ? 0 : good.val;
-        SK.goods[id].formatted = SK.formatPrice((bought == 0 ? 0 : good.val), false);
         SK.update();
     };
 
