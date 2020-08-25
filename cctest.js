@@ -65,56 +65,72 @@ let SK = {
         <tr id="SK-0" style="opacity:.4">
             <td>CRL</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-1" style="opacity:.4">
             <td>CHC</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-2" style="opacity:.4">
             <td>BTR</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-3" style="opacity:.4">
             <td>SUG</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-4" style="opacity:.4">
             <td>NUT</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-5" style="opacity:.4">
             <td>SLT</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-6" style="opacity:.4">
             <td>VNL</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-7" style="opacity:.4">
             <td>EGG</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
@@ -128,42 +144,54 @@ let SK = {
         <tr id="SK-9" style="opacity:.4">
             <td>CRM</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-10" style="opacity:.4">
             <td>JAM</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-11" style="opacity:.4">
             <td>WCH</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-12" style="opacity:.4">
             <td>HNY</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-13" style="opacity:.4">
             <td>CKI</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
         <tr id="SK-14" style="opacity:.4">
             <td>RCP</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
@@ -254,7 +282,9 @@ SK.update = () => {
         let row = table.querySelector(`#SK-${id}`);
         row.style.opacity = bought > 0 ? 1 : .4;
         row.querySelector('.SK-low').innerHTML = SK.goods[id].flow;
+        row.querySelector('.SK-bcur').innerHTML = (SK.goods[id].cur-SK.goods[id].low)/(SK.goods[id].high-SK.goods[id].low)>0.3 ? "<":"";
         row.querySelector('.SK-cur').innerHTML = SK.goods[id].fcur;
+        row.querySelector('.SK-acur').innerHTML = (SK.goods[id].cur-SK.goods[id].low)/(SK.goods[id].high-SK.goods[id].low)<0.7 ? "<":"";
         row.querySelector('.SK-high').innerHTML = SK.goods[id].fhigh;
         row.querySelector('.SK-profit').innerHTML = SK.goods[id].formattedProfit;
     });
