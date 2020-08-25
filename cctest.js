@@ -243,11 +243,11 @@ SK.update = () => {
             SK.goods[id].fhigh = SK.formatPrice(0, false);
         }
         SK.goods[id].low = SK.goods[id].low < good.val ? SK.goods[id].low : good.val ;
-        SK.goods[id].flow = SK.formatPrice(SK.goods[id].low, true);
+        SK.goods[id].flow = SK.formatPrice(SK.goods[id].low, false);
         SK.goods[id].high = SK.goods[id].high > good.val ? SK.goods[id].high : good.val ;
-        SK.goods[id].fhigh = SK.formatPrice(SK.goods[id].high, true);
+        SK.goods[id].fhigh = SK.formatPrice(SK.goods[id].high, false);
         SK.goods[id].cur = good.val;
-        SK.goods[id].fcur = SK.formatPrice(SK.goods[id].cur, true);
+        SK.goods[id].fcur = SK.formatPrice(SK.goods[id].cur, false);
         SK.goods[id].profit = (good.val * bought) - (SK.goods[id].value * bought);
         SK.goods[id].formattedProfit = SK.formatPrice(SK.goods[id].profit, true);
         
