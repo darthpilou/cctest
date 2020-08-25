@@ -300,15 +300,15 @@ SK.update = () => {
         let bcur= '';
         let acur= '';
         if (ratio <0.2){
-            bcur='~~~';
-            acur='   ';}
+            bcur='~';
+            acur=' ';}
         else {
             if (ratio >0.8){
-                bcur='   ';
-                acur='~~~';}
+                bcur=' ';
+                acur='~';}
             else {
-                bcur=' < ';
-                acur=' < ';
+                bcur=' ';
+                acur=' ';
             }
         }
         
