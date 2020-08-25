@@ -299,9 +299,14 @@ SK.update = () => {
         let ratio = (SK.goods[id].cur-SK.goods[id].low)/(SK.goods[id].high-SK.goods[id].low);
         let bcur= '';
         let acur= '';
+        let opac= 0.4;
         if (ratio <0.2){
             bcur='~';
-            acur=' ';}
+            acur=' ';
+            if ( (SK.goods[id].high-SK.goods[id].low>25){
+                opac = 1;
+            }
+        }
         else {
             if (ratio >0.8){
                 bcur=' ';
@@ -311,9 +316,12 @@ SK.update = () => {
                 acur=' ';
             }
         }
+        if (bought > 0 &&  SK.goods[id].value > SK.goods[id].cur+10){
+            opac = 1;
+        }
         
         let row = table.querySelector(`#SK-${id}`);
-        row.style.opacity = bought > 0 ? 1 : .4;
+        row.style.opacity = opac;
         row.querySelector('.SK-low').innerHTML = SK.goods[id].flow;
         row.querySelector('.SK-bcur').innerHTML = bcur;
         row.querySelector('.SK-cur').innerHTML = SK.goods[id].fcur;
