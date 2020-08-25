@@ -303,7 +303,7 @@ SK.update = () => {
         if (ratio <0.2){
             bcur='~';
             acur=' ';
-            if (SK.goods[id].high-SK.goods[id].low>25)
+            if (bought == 0 && SK.goods[id].high-SK.goods[id].low>25)
                 opac = 1;
         }
         else {
