@@ -296,12 +296,38 @@ SK.update = () => {
         SK.goods[id].profit = (good.val * bought) - (SK.goods[id].value * bought);
         SK.goods[id].formattedProfit = SK.formatPrice(SK.goods[id].profit, true);
         
+        let ratio = (SK.goods[id].cur-SK.goods[id].low)/(SK.goods[id].high-SK.goods[id].low);
+        let bcur= "";
+        let acur= "";
+        if (ratio <0.2){
+            bcur="~~";
+            acur="<<";}
+        else {
+            if (ratio <0.4){
+                bcur="<";
+                acur="<<";}
+            else {
+                if (ratio <0.6){
+                    bcur="<";
+                    acur="<";}
+                else {
+                    if (ratio <0.8){
+                        bcur="<<";
+                        acur="<";}
+                    else {
+                        bcur="<<";
+                        acur="~~";}
+                    }
+                }
+            }
+        }
+        
         let row = table.querySelector(`#SK-${id}`);
         row.style.opacity = bought > 0 ? 1 : .4;
         row.querySelector('.SK-low').innerHTML = SK.goods[id].flow;
-        row.querySelector('.SK-bcur').innerHTML = (SK.goods[id].cur-SK.goods[id].low)/(SK.goods[id].high-SK.goods[id].low)>0.3 ? "<":"";
+        row.querySelector('.SK-bcur').innerHTML = bcur;
         row.querySelector('.SK-cur').innerHTML = SK.goods[id].fcur;
-        row.querySelector('.SK-acur').innerHTML = (SK.goods[id].cur-SK.goods[id].low)/(SK.goods[id].high-SK.goods[id].low)<0.7 ? "<":"";
+        row.querySelector('.SK-acur').innerHTML = acur;
         row.querySelector('.SK-high').innerHTML = SK.goods[id].fhigh;
         row.querySelector('.SK-profit').innerHTML = SK.goods[id].formattedProfit;
     });
