@@ -137,7 +137,9 @@ let SK = {
         <tr id="SK-8" style="opacity:.4">
             <td>CNM</td>
             <td class="SK-ba"><span class="SK-low">$0.00</span><</td>
+            <td><span class="SK-bcur"></span><</td>
             <td><span class="SK-cur">$0.00</span><</td>
+            <td><span class="SK-acur"></span><</td>
             <td><span class="SK-high">$0.00</span>|</td>
             <td><span class="SK-profit">$0.00</span></td>
         </tr>
