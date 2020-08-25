@@ -303,9 +303,8 @@ SK.update = () => {
         if (ratio <0.2){
             bcur='~';
             acur=' ';
-            if ( (SK.goods[id].high-SK.goods[id].low>25){
+            if (SK.goods[id].high-SK.goods[id].low>25)
                 opac = 1;
-            }
         }
         else {
             if (ratio >0.8){
@@ -316,9 +315,8 @@ SK.update = () => {
                 acur=' ';
             }
         }
-        if (bought > 0 &&  SK.goods[id].value > SK.goods[id].cur+10){
+        if (bought > 0 &&  SK.goods[id].value > SK.goods[id].cur+10)
             opac = 1;
-        }
         
         let row = table.querySelector(`#SK-${id}`);
         row.style.opacity = opac;
