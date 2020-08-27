@@ -266,7 +266,7 @@ cctest.updateProgressBar = (good,id,row) => {
 		width2 = 0;
 		let red = width1*256/100;
 		let green = 256-red;
-		color1 = "linear-gradient(90deg, rgba(0,256,0,1) 0%, rgba("+ red + "," + green +",0,1) 100%)";
+		color1 = "linear-gradient(90deg, rgba(0,256,0,1) 0%, rgba("+ red.toFixed(0).toString() + "," + green.toFixed(0).toString() +",0,1) 100%)";
 		color2 = "#000000";
 	}
 	else {
