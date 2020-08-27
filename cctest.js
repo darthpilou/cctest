@@ -56,7 +56,7 @@ let cctest = {
             color: #4bf0b8;
         }
         #cctestTable .cctest-progress {
-			width: 64px;
+			width: 96px;
 		}
         #cctestTable .cctest-high {
             color: #a358ff;
