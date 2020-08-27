@@ -298,7 +298,7 @@ cctest.update = () => {
         if (ratio <0.2){
 		acur=' ';
 		cur=' ';
-		if(ratio==0) 
+		if(good.val-cctest.goods[id].low < 0.01) 
 			bcur='=';
 		else 
 			bcur='~';
@@ -309,7 +309,7 @@ cctest.update = () => {
 		if (ratio >0.8){
 			bcur=' ';
 			cur=' ';
-			if(ratio==1) 
+			if(cctest.goods[id].high-good.val < 0.01) 
 				acur='=';
 			else 
 				acur='~';
