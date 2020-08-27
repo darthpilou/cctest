@@ -297,25 +297,28 @@ cctest.update = () => {
         let opac= 0.4;
         if (ratio <0.2){
 		acur=' ';
+		cur=' ';
 		if(ratio==0) 
 			bcur='=';
 		else 
 			bcur='~';
-            if (bought == 0 && cctest.goods[id].high-cctest.goods[id].low>25)
-                opac = 1;
-        }
+		if (bought == 0 && cctest.goods[id].high-cctest.goods[id].low>25)
+			opac = 1;
+	}
         else {
-            if (ratio >0.8){
-                bcur=' ';
-		if(ratio==1) 
-			acur='=';
-		else 
-			acur='~';
-	    }
-            else {
-                bcur=' ';
-                acur=' ';
-            }
+		if (ratio >0.8){
+			bcur=' ';
+			cur=' ';
+			if(ratio==1) 
+				acur='=';
+			else 
+				acur='~';
+		}
+		else {
+			bcur=' ';
+			cur='|';
+			acur=' ';
+		}
         }
         if (bought > 0 &&  good.val > cctest.goods[id].value+20)
             opac = 1;
@@ -324,7 +327,7 @@ cctest.update = () => {
         row.style.opacity = opac;
         row.querySelector('.cctest-low').innerHTML = cctest.formatPrice(cctest.goods[id].lowval, false);
         row.querySelector('.cctest-bcur').innerHTML = bcur;
-        row.querySelector('.cctest-cur').innerHTML = cctest.formatPrice(good.val, false);
+        row.querySelector('.cctest-cur').innerHTML = cur;
         row.querySelector('.cctest-acur').innerHTML = acur;
         row.querySelector('.cctest-high').innerHTML = cctest.formatPrice(cctest.goods[id].highval, false);
         row.querySelector('.cctest-profit').innerHTML = cctest.formatPrice(cctest.goods[id].profit, true);
