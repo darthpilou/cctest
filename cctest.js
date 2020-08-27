@@ -288,7 +288,7 @@ cctest.update = () => {
         cctest.initializeGoods();
 
     let table = document.getElementById('cctestTable');
-    row.querySelector('.cctest-time').innerHTML ='Next tick in '+Game.sayTime((Game.fps*M.secondsPerTick)-M.tickT+30,-1)+'.';
+    table.querySelector(`#cctest-last`).querySelector('.cctest-time').innerHTML ='Next tick in '+Game.sayTime((Game.fps*M.secondsPerTick)-M.tickT+30,-1)+'.';
 
     cctest.minigameGoods.map((good, id) => {
         let bought = cctest.goods[id].bought;
