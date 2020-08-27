@@ -296,22 +296,21 @@ cctest.update = () => {
         let acur= '';
         let opac= 0.4;
         if (ratio <0.2){
-            acur=' ';
-			if(ratio==0)
-				bcur='=';
-			else
-				bcur='~';
-				
+		acur=' ';
+		if(ratio==0) {
+			bcur='=';}
+		else {
+			bcur='~';}
             if (bought == 0 && cctest.goods[id].high-cctest.goods[id].low>25)
                 opac = 1;
         }
         else {
             if (ratio >0.8){
                 bcur=' ';
-				if(ratio==1)
-					acur='=';
-				else
-					acur='~';
+		if(ratio==1) {
+			acur='=';}
+		else {
+			acur='~';}
             else {
                 bcur=' ';
                 acur=' ';
