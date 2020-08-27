@@ -264,7 +264,9 @@ cctest.updateProgressBar = (good,id,row) => {
 	if (cctest.goods[id].bought==0) {
 		width1 = (good.val-cctest.goods[id].lowval)/range*100;
 		width2 = 0;
-		color1 = "#4bb8f0";
+		let red = width1*256/100;
+		let green = 256-red;
+		color1 = "linear-gradient(90deg, rgba(0,256,0,1) 0%, rgba("+ red + "," + green +",0,1) 100%)";
 		color2 = "#000000";
 	}
 	else {
