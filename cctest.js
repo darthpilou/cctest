@@ -326,7 +326,7 @@ cctest.update = () => {
         row.querySelector('.cctest-low').innerHTML = cctest.formatPrice(cctest.goods[id].lowval, false);
 	cctest.updateProgressBar(good,id,row);
         row.querySelector('.cctest-high').innerHTML = cctest.formatPrice(cctest.goods[id].highval, false);
-        row.querySelector('.cctest-profit').innerHTML = cctest.formatPrice(cctest.goods[id].profit, true);
+        row.querySelector('.cctest-profit').innerHTML = cctest.goods[id].bought > 0 ? cctest.formatPrice(cctest.goods[id].profit, true) : "";
     });
 
     let serialized = btoa(JSON.stringify(cctest.goods));
