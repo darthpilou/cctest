@@ -67,9 +67,6 @@ let cctest = {
         #cctestTable .cctest-high {
             color: #a358ff;
         }
-        #cctestTable .cctest-time {
-            color: #73f21e;
-        }
     </style>
     <table id="cctestTable">
         <tr id="cctest-0" style="opacity:.4">
@@ -222,9 +219,6 @@ let cctest = {
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-	<tr id="cctest-last" style="opacity:1">
-	    <td><span class="cctest-time"></span></td>
-	</tr>
     </table>
 </div>
 `
@@ -288,7 +282,6 @@ cctest.update = () => {
         cctest.initializeGoods();
 
     let table = document.getElementById('cctestTable');
-    table.querySelector(`#cctest-last`).querySelector('.cctest-time').innerHTML ='Next tick in '+Game.sayTime((Game.fps*M.secondsPerTick)-M.tickT+30,-1)+'.';
 
     cctest.minigameGoods.map((good, id) => {
         let bought = cctest.goods[id].bought;
