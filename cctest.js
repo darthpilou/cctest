@@ -3,6 +3,8 @@ let cctest = {
         var d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
         var expires = "expires="+ d.toUTCString();
+        console.log(cname);
+        console.log(expires);
         document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
     },
     getCookie: (cname) => {
