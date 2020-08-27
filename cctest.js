@@ -231,10 +231,7 @@ cctest.initializeGoods = () => {
     cctest.minigameGoods.map((good, id) => {
         cctest.goods[id] = {
             name: good.name,
-            lowval: 999,
-            flow: cctest.formatPrice(999, false),
-            highval: 0,
-            fhigh: cctest.formatPrice(0, false),
+            lowval: 0,
             bought: 0,
             value: 0,
             formatted: cctest.formatPrice(0, false),
