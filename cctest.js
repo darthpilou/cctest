@@ -283,10 +283,10 @@ cctest.updateProgressBar = (good,id,row) => {
 	}
 	let bar1 = row.querySelector('.cctest-bar1');
 	let bar2 = row.querySelector('.cctest-bar2');
-    bar1.style.width = width1 + "%";	
-    bar1.style.backgroundColor = "#73f21e";	
-    bar2.style.width = second + "%";	
-    bar2.style.backgroundColor = "#73f21e";	
+    bar1.style.width = width1.toFixed(0) + "%";	
+    bar1.style.backgroundColor = color1;	
+    bar2.style.width = width2.toFixed(0) + "%";	
+    bar2.style.backgroundColor = color2;	
 };
 
 cctest.update = () => {
@@ -313,6 +313,7 @@ cctest.update = () => {
         let row = table.querySelector(`#cctest-${id}`);
         row.style.opacity = opac;
         row.querySelector('.cctest-low').innerHTML = cctest.formatPrice(cctest.goods[id].lowval, false);
+	cctest.updateProgressBar(good,id,row);
         row.querySelector('.cctest-high').innerHTML = cctest.formatPrice(cctest.goods[id].highval, false);
         row.querySelector('.cctest-profit').innerHTML = cctest.formatPrice(cctest.goods[id].profit, true);
     });
