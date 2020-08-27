@@ -270,9 +270,15 @@ cctest.drawLoop = () => {
 cctest.drawInterval = setInterval(cctest.drawLoop, 10);
 
 cctest.formatPrice = (val, colored) => {
-    let money = '$' + val.toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-
-    let style = colored ? (val >= 0 ? 'color:#73f21e;' : 'color:#f21e3c;') : "";
+	if(colored == true) {
+		let money = val.toFixed(1).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		let style = "";
+	}
+	else {
+		let mval = val/1000;
+		let money = mval.toFixed(0).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "k";
+		let style = val >= 0 ? 'color:#73f21e;' : 'color:#f21e3c;' ;
+	}
 
     return `<span style="${style}">${money}</span>`;
 };
