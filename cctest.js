@@ -291,25 +291,25 @@ cctest.update = () => {
         cctest.goods[id].lowval = good.val < cctest.goods[id].lowval ? good.val : cctest.goods[id].lowval;
         cctest.goods[id].highval = good.val > cctest.goods[id].highval ? good.val : cctest.goods[id].highval;
 
-        let ratio = (good.val-cctest.goods[id].low)/(cctest.goods[id].high-cctest.goods[id].low);
+        let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
         let bcur= '';
         let acur= '';
         let opac= 0.4;
         if (ratio <0.2){
 		acur=' ';
 		cur=' ';
-		if(good.val-cctest.goods[id].low < 0.01) 
+		if(good.val-cctest.goods[id].lowval < 0.01) 
 			bcur='=';
 		else 
 			bcur='~';
-		if (bought == 0 && cctest.goods[id].high-cctest.goods[id].low>25)
+		if (bought == 0 && cctest.goods[id].highval-cctest.goods[id].lowval>25)
 			opac = 1;
 	}
         else {
 		if (ratio >0.8){
 			bcur=' ';
 			cur=' ';
-			if(cctest.goods[id].high-good.val < 0.01) 
+			if(cctest.goods[id].highval-good.val < 0.01) 
 				acur='=';
 			else 
 				acur='~';
