@@ -52,103 +52,172 @@ let cctest = {
         #cctestTable td {
             width: 32;
         }
-        #cctestTable .cctest-bought {
+        #cctestTable .cctest-low {
+            color: #4bf0b8;
+        }
+        #cctestTable .cctest-bcur {
             color: #4bb8f0;
         }
-        #cctestTable .cctest-boughtAt {
+        #cctestTable .cctest-cur {
+            color: #4bb8f0;
+        }
+        #cctestTable .cctest-acur {
+            color: #4bb8f0;
+        }
+        #cctestTable .cctest-high {
             color: #a358ff;
         }
     </style>
     <table id="cctestTable">
         <tr id="cctest-0" style="opacity:.4">
             <td>CRL</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-1" style="opacity:.4">
             <td>CHC</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-2" style="opacity:.4">
             <td>BTR</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-3" style="opacity:.4">
             <td>SUG</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-4" style="opacity:.4">
             <td>NUT</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-5" style="opacity:.4">
             <td>SLT</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-6" style="opacity:.4">
             <td>VNL</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-7" style="opacity:.4">
             <td>EGG</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-8" style="opacity:.4">
             <td>CNM</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-9" style="opacity:.4">
             <td>CRM</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-10" style="opacity:.4">
             <td>JAM</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-11" style="opacity:.4">
             <td>WCH</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-12" style="opacity:.4">
             <td>HNY</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-13" style="opacity:.4">
             <td>CKI</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
         <tr id="cctest-14" style="opacity:.4">
             <td>RCP</td>
-            <td class="cctest-ba">(<span class="cctest-bought">0</span> </td>
-            <td>@ <span class="cctest-boughtAt">$0.00</span>)</td>
-            <td> -&gt; <span class="cctest-profit">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span>|</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
     </table>
 </div>
@@ -225,8 +294,8 @@ cctest.update = () => {
         
         let row = table.querySelector(`#cctest-${id}`);
         row.style.opacity = bought > 0 ? 1 : .4;
-        row.querySelector('.cctest-bought').innerHTML = cctest.goods[id].bought;
-        row.querySelector('.cctest-boughtAt').innerHTML = cctest.goods[id].formatted;
+        row.querySelector('.cctest-low').innerHTML = cctest.goods[id].bought;
+        row.querySelector('.cctest-cur').innerHTML = cctest.goods[id].formatted;
         row.querySelector('.cctest-profit').innerHTML = cctest.goods[id].formattedProfit;
     });
 
