@@ -231,14 +231,11 @@ cctest.initializeGoods = () => {
     cctest.minigameGoods.map((good, id) => {
         cctest.goods[id] = {
             name: good.name,
-            lowval: 0,
-            lowvalfor: cctest.formatPrice(0, false),
+            lowval: 1000,
             highval: 0,
             bought: 0,
             value: 0,
-            formatted: cctest.formatPrice(0, false),
             profit: 0,
-            formattedProfit: cctest.formatPrice(0, true)
         };
     });
 };
@@ -288,18 +285,15 @@ cctest.update = () => {
 
     cctest.minigameGoods.map((good, id) => {
         let bought = cctest.goods[id].bought;
-        if (good.stock == 0) {
+        if (good.stock == 0)
             cctest.goods[id].bought = 0;
-            cctest.goods[id].formatted = cctest.formatPrice(0, false);
-        }
         cctest.goods[id].profit = (good.val * bought) - (cctest.goods[id].value * bought);
-        cctest.goods[id].formattedProfit = cctest.formatPrice(cctest.goods[id].profit, true);
         
         let row = table.querySelector(`#cctest-${id}`);
         row.style.opacity = bought > 0 ? 1 : .4;
         row.querySelector('.cctest-low').innerHTML = cctest.goods[id].bought;
-        row.querySelector('.cctest-cur').innerHTML = cctest.goods[id].formatted;
-        row.querySelector('.cctest-profit').innerHTML = cctest.goods[id].formattedProfit;
+        row.querySelector('.cctest-cur').innerHTML = cctest.formatPrice(cctest.goods[id].value, false);
+        row.querySelector('.cctest-profit').innerHTML = cctest.formatPrice(cctest.goods[id].profit, true);
     });
 
     let serialized = btoa(JSON.stringify(cctest.goods));
@@ -312,7 +306,6 @@ cctest.minigameGoods.map((good, id) => {
     let buy = (bought) => {
         cctest.goods[id].bought = bought;
         cctest.goods[id].value = bought == 0 ? 0 : good.val;
-        cctest.goods[id].formatted = cctest.formatPrice((bought == 0 ? 0 : good.val), false);
         cctest.update();
     };
 
