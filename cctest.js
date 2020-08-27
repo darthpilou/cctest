@@ -263,7 +263,7 @@ cctest.updateProgressBar = (good,id,row) => {
 	
 	if (cctest.goods[id].bought==0) {
 		width1 = (good.val-cctest.goods[id].lowval)/range*100;
-		width2 = 100-500/width1;
+		width2 = 100-500/(width1+0.001);
         	let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
 		if(ratio < 0.2) {
 			color1 = "#00ff00";
@@ -283,13 +283,13 @@ cctest.updateProgressBar = (good,id,row) => {
 			width1 = (cctest.goods[id].value-cctest.goods[id].lowval)/range*100;
 			width2 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
 			color1 = "#f21e3c";
-			color2 = "#4bb8f0";
+			color2 = "#1f2836";
 		}
 		else {
 			width1 = (good.val-cctest.goods[id].lowval)/range*100;
 			width2 = (cctest.goods[id].value-cctest.goods[id].lowval)/(good.val-cctest.goods[id].lowval)*100;
 			color1 = "#73f21e";
-			color2 = "#4bb8f0";
+			color2 = "#1f2836";
 		}
 	}
 	let bar1 = row.querySelector('.cctest-bar1');
