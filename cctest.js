@@ -56,7 +56,7 @@ let cctest = {
             color: #4bf0b8;
         }
         #cctestTable .cctest-progress {
-			width: 50px;
+			width: 64px;
 			background-color: grey;
 		}
         #cctestTable .cctest-high {
@@ -72,10 +72,7 @@ let cctest = {
         <tr id="cctest-0" style="opacity:.4">
             <td>CRL</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -83,10 +80,7 @@ let cctest = {
         <tr id="cctest-1" style="opacity:.4">
             <td>CHC</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -94,10 +88,7 @@ let cctest = {
         <tr id="cctest-2" style="opacity:.4">
             <td>BTR</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -105,10 +96,7 @@ let cctest = {
         <tr id="cctest-3" style="opacity:.4">
             <td>SUG</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -116,10 +104,7 @@ let cctest = {
         <tr id="cctest-4" style="opacity:.4">
             <td>NUT</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -127,10 +112,7 @@ let cctest = {
         <tr id="cctest-5" style="opacity:.4">
             <td>SLT</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -138,10 +120,7 @@ let cctest = {
         <tr id="cctest-6" style="opacity:.4">
             <td>VNL</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -149,10 +128,7 @@ let cctest = {
         <tr id="cctest-7" style="opacity:.4">
             <td>EGG</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -160,10 +136,7 @@ let cctest = {
         <tr id="cctest-8" style="opacity:.4">
             <td>CNM</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -171,10 +144,7 @@ let cctest = {
         <tr id="cctest-9" style="opacity:.4">
             <td>CRM</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -182,10 +152,7 @@ let cctest = {
         <tr id="cctest-10" style="opacity:.4">
             <td>JAM</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -193,10 +160,7 @@ let cctest = {
         <tr id="cctest-11" style="opacity:.4">
             <td>WCH</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -204,10 +168,7 @@ let cctest = {
         <tr id="cctest-12" style="opacity:.4">
             <td>HNY</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -215,10 +176,7 @@ let cctest = {
         <tr id="cctest-13" style="opacity:.4">
             <td>CKI</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -226,10 +184,7 @@ let cctest = {
         <tr id="cctest-14" style="opacity:.4">
             <td>RCP</td>
             <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
-            <td><div id="cctest-progress">
-			  <div id="cctest-bar1"></div>
-			  <div id="cctest-bar2"></div>
-			</div></td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
             <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
             <td><span class="cctest-profit">$0.00</span></td>
@@ -315,8 +270,6 @@ cctest.update = () => {
         cctest.goods[id].highval = good.val > cctest.goods[id].highval ? good.val : cctest.goods[id].highval;
 
         let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
-        let bcur= '';
-        let acur= '';
         let opac= 0.4;
         if (ratio <0.2 && bought == 0 && cctest.goods[id].highval-cctest.goods[id].lowval>25)
 			opac = 1;
