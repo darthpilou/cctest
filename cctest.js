@@ -251,7 +251,12 @@ cctest.goods = Array(cctest.minigameGoods.length);
 // Attach position of div to canvas
 // This is done this way because putting this table near the canvas breaks
 // the draw loop for some reason
-@@ -182,7 +187,7 @@ let getOffset = (el) => {
+let getOffset = (el) => {
+    const rect = el.getBoundingClientRect();
+    return {
+        left: rect.left + window.scrollX,
+        top: rect.top + window.scrollY
+    };
 };
 
 cctest.drawLoop = () => {
@@ -260,7 +265,11 @@ cctest.drawLoop = () => {
         document.getElementById('cctest-container').style.visibility = 'hidden';
     else
         document.getElementById('cctest-container').style.visibility = 'visible';
-@@ -195,9 +200,6 @@ cctest.drawLoop = () => {
+    var canvasRect = getOffset(document.getElementById('bankGraph'));
+    if (canvasRect.top == cctest.canvasLastTop)
+        return;
+    
+    document.getElementById('cctest-container').style.top = canvasRect.top + 'px';
 };
 cctest.drawInterval = setInterval(cctest.drawLoop, 10);
 
@@ -270,7 +279,8 @@ cctest.goods = Array(cctest.minigameGoods.length);
 cctest.formatPrice = (val, colored) => {
     let money = '$' + val.toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
-@@ -207,7 +209,7 @@ cctest.formatPrice = (val, colored) => {
+    let style = colored ? (val >= 0 ? 'color:#73f21e;' : 'color:#f21e3c;') : "";
+    return `<span style="${style}">${money}</span>`;
 };
 
 cctest.update = () => {
