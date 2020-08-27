@@ -3,9 +3,12 @@ let cctest = {
         var d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
         var expires = "expires="+ d.toUTCString();
-        console.log(cname);
-        console.log(expires);
-        document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+        try {
+                document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+        } catch(err) {
+            console.log(err.message);
+        }
+
     },
     getCookie: (cname) => {
         var name = cname + "=";
@@ -23,6 +26,7 @@ let cctest = {
         return "";
     },
     saveData: {},
+    bank: {},
     minigameGoods: {},
     goods: {},
     initializeGoods: {},
@@ -222,17 +226,6 @@ let cctest = {
 document.getElementById('sectionMiddle')
     .insertAdjacentHTML('beforeend', cctest.htmlTemplate);
 
-// Attach position of div to canvas
-// This is done this way because putting this table near the canvas breaks
-// the draw loop for some reason
-let getOffset = (el) => {
-    const rect = el.getBoundingClientRect();
-    return {
-        left: rect.left + window.scrollX,
-        top: rect.top + window.scrollY
-    };
-};
-
 cctest.initializeGoods = () => {
     cctest.minigameGoods.map((good, id) => {
         cctest.goods[id] = {
@@ -251,17 +244,23 @@ cctest.initializeGoods = () => {
     });
 };
 
+cctest.bank = Game.ObjectsById[5];
+cctest.minigameGoods = cctest.bank.minigame.goodsById;
+cctest.goods = Array(cctest.minigameGoods.length);
+
+// Attach position of div to canvas
+// This is done this way because putting this table near the canvas breaks
+// the draw loop for some reason
+@@ -182,7 +187,7 @@ let getOffset = (el) => {
+};
+
 cctest.drawLoop = () => {
     if (Game.onMenu != "" || Game.ObjectsById[5].amount == 0)
+    if (Game.onMenu != "" || cctest.bank.amount == 0 || cctest.bank.muted || !cctest.bank.onMinigame)
         document.getElementById('cctest-container').style.visibility = 'hidden';
     else
         document.getElementById('cctest-container').style.visibility = 'visible';
-
-    var canvasRect = getOffset(document.getElementById('bankGraph'));
-    if (canvasRect.top == cctest.canvasLastTop)
-        return;
-    
-    document.getElementById('cctest-container').style.top = canvasRect.top + 'px';
+@@ -195,9 +200,6 @@ cctest.drawLoop = () => {
 };
 cctest.drawInterval = setInterval(cctest.drawLoop, 10);
 
@@ -271,14 +270,13 @@ cctest.goods = Array(cctest.minigameGoods.length);
 cctest.formatPrice = (val, colored) => {
     let money = '$' + val.toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
-    let style = colored ? (val >= 0 ? 'color:#73f21e;' : 'color:#f21e3c;') : "";
-
-    return `<span style="${style}">${money}</span>`;
+@@ -207,7 +209,7 @@ cctest.formatPrice = (val, colored) => {
 };
 
 cctest.update = () => {
     if (Game.ObjectsById[5].amount == 0)
-        cctest.initializeGoods();
+        if (cctest.bank.amount == 0)
+            cctest.initializeGoods();
 
     let table = document.getElementById('cctestTable');
 
