@@ -266,7 +266,7 @@ cctest.updateProgressBar = (good,id,row) => {
 		width2 = 0;
 		let red = width1*256/100;
 		let green = 256-red;
-		color1 = "linear-gradient(90deg, rgba(0,256,0,1) 0%, rgba("+ red.toFixed(0).toString() + "," + green.toFixed(0).toString() +",0,1) 100%)";
+		color1 = "linear-gradient(90deg, rgba(0,256,0,1) 0%, rgba(0,256,0,1) 100%)";
 		color2 = "#000000";
 	}
 	else {
@@ -286,9 +286,9 @@ cctest.updateProgressBar = (good,id,row) => {
 	let bar1 = row.querySelector('.cctest-bar1');
 	let bar2 = row.querySelector('.cctest-bar2');
     bar1.style.width = width1.toFixed(0) + "%";	
-    bar1.style.backgroundColor = color1;	
+    bar1.style.background = color1;	
     bar2.style.width = width2.toFixed(0) + "%";	
-    bar2.style.backgroundColor = color2;	
+    bar2.style.background = color2;	
 };
 
 cctest.update = () => {
