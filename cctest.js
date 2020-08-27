@@ -266,14 +266,14 @@ cctest.updateProgressBar = (good,id,row) => {
 		width2 = 0;
         	let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
 		if(ratio < 0.2) {
-			color1 = "#73f21e";
+			color1 = "#00ff00";
 		}
 		else {
 			if(ratio > 0.8) {
-				color1 = "#f21e3c";
+				color1 = "#ff0000";
 			}
 			else {
-				color1 = "#c0c000";
+				color1 = "#c0c0c0";
 			}
 		}
 		color2 = "#000000";
