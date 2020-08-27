@@ -232,6 +232,7 @@ cctest.initializeGoods = () => {
         cctest.goods[id] = {
             name: good.name,
             lowval: 0,
+            lowvalfor: cctest.formatPrice(0, false),
             highval: 0,
             bought: 0,
             value: 0,
