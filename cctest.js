@@ -1,4 +1,4 @@
-let SK = {
+let cctest = {
     setCookie: (cname, cvalue, exdays) => {
         var d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -33,9 +33,9 @@ let SK = {
     canvasLastTop: 0,
     canvasLastLeft: 0,
     htmlTemplate: `
-<div id="SK-container" style="position:absolute; left:24px;">
+<div id="cctest-container" style="position:absolute; left:24px;">
     <style>
-        #SKTable {
+        #cctestTable {
             z-index: 10000;
             display: block;
             position: relative;
@@ -45,172 +45,172 @@ let SK = {
             font-weight: bold;
             padding: 2px;
         }
-        #SKTable tr {
+        #cctestTable tr {
             margin-bottom: 1px;
         }
-        #SKTable td {
+        #cctestTable td {
             width: 32;
         }
-        #SKTable .SK-low {
+        #cctestTable .cctest-low {
             color: #4bf0b8;
         }
-        #SKTable .SK-cur {
+        #cctestTable .cctest-cur {
             color: #4bb8f0;
         }
-        #SKTable .SK-high {
+        #cctestTable .cctest-high {
             color: #a358ff;
         }
     </style>
-    <table id="SKTable">
-        <tr id="SK-0" style="opacity:.4">
+    <table id="cctestTable">
+        <tr id="cctest-0" style="opacity:.4">
             <td>CRL</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-1" style="opacity:.4">
+        <tr id="cctest-1" style="opacity:.4">
             <td>CHC</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-2" style="opacity:.4">
+        <tr id="cctest-2" style="opacity:.4">
             <td>BTR</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-3" style="opacity:.4">
+        <tr id="cctest-3" style="opacity:.4">
             <td>SUG</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-4" style="opacity:.4">
+        <tr id="cctest-4" style="opacity:.4">
             <td>NUT</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-5" style="opacity:.4">
+        <tr id="cctest-5" style="opacity:.4">
             <td>SLT</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-6" style="opacity:.4">
+        <tr id="cctest-6" style="opacity:.4">
             <td>VNL</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-7" style="opacity:.4">
+        <tr id="cctest-7" style="opacity:.4">
             <td>EGG</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-8" style="opacity:.4">
+        <tr id="cctest-8" style="opacity:.4">
             <td>CNM</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-9" style="opacity:.4">
+        <tr id="cctest-9" style="opacity:.4">
             <td>CRM</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-10" style="opacity:.4">
+        <tr id="cctest-10" style="opacity:.4">
             <td>JAM</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-11" style="opacity:.4">
+        <tr id="cctest-11" style="opacity:.4">
             <td>WCH</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-12" style="opacity:.4">
+        <tr id="cctest-12" style="opacity:.4">
             <td>HNY</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-13" style="opacity:.4">
+        <tr id="cctest-13" style="opacity:.4">
             <td>CKI</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="SK-14" style="opacity:.4">
+        <tr id="cctest-14" style="opacity:.4">
             <td>RCP</td>
-            <td class="SK-ba"><span class="SK-low">$0.00</span></td>
-            <td><span class="SK-bcur"></span></td>
-            <td><span class="SK-cur">$0.00</span></td>
-            <td><span class="SK-acur"></span></td>
-            <td><span class="SK-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td>
+            <td><span class="cctest-bcur"></span></td>
+            <td><span class="cctest-cur">$0.00</span></td>
+            <td><span class="cctest-acur"></span></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="SK-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
     </table>
 </div>
@@ -218,7 +218,7 @@ let SK = {
 };
 
 document.getElementById('sectionMiddle')
-    .insertAdjacentHTML('beforeend', SK.htmlTemplate);
+    .insertAdjacentHTML('beforeend', cctest.htmlTemplate);
 
 // Attach position of div to canvas
 // This is done this way because putting this table near the canvas breaks
@@ -231,42 +231,42 @@ let getOffset = (el) => {
     };
 };
 
-SK.initializeGoods = () => {
-    SK.minigameGoods.map((good, id) => {
-        SK.goods[id] = {
+cctest.initializeGoods = () => {
+    cctest.minigameGoods.map((good, id) => {
+        cctest.goods[id] = {
             name: good.name,
             bought: 0,
             value: 0,
             low: 1000,
-            flow: SK.formatPrice(1000, false),
+            flow: cctest.formatPrice(1000, false),
             high: 0,
-            fhigh: SK.formatPrice(0, false),
+            fhigh: cctest.formatPrice(0, false),
             cur: 0,
-            fcur: SK.formatPrice(0, false),
+            fcur: cctest.formatPrice(0, false),
             profit: 0,
-            formattedProfit: SK.formatPrice(0, true)
+            formattedProfit: cctest.formatPrice(0, true)
         };
     });
 };
 
-SK.drawLoop = () => {
+cctest.drawLoop = () => {
     if (Game.onMenu != "" || Game.ObjectsById[5].amount == 0)
-        document.getElementById('SK-container').style.visibility = 'hidden';
+        document.getElementById('cctest-container').style.visibility = 'hidden';
     else
-        document.getElementById('SK-container').style.visibility = 'visible';
+        document.getElementById('cctest-container').style.visibility = 'visible';
 
     var canvasRect = getOffset(document.getElementById('bankGraph'));
-    if (canvasRect.top == SK.canvasLastTop)
+    if (canvasRect.top == cctest.canvasLastTop)
         return;
     
-    document.getElementById('SK-container').style.top = canvasRect.top + 'px';
+    document.getElementById('cctest-container').style.top = canvasRect.top + 'px';
 };
-SK.drawInterval = setInterval(SK.drawLoop, 10);
+cctest.drawInterval = setInterval(cctest.drawLoop, 10);
 
-SK.minigameGoods = Game.ObjectsById[5].minigame.goodsById;
-SK.goods = Array(SK.minigameGoods.length);
+cctest.minigameGoods = Game.ObjectsById[5].minigame.goodsById;
+cctest.goods = Array(cctest.minigameGoods.length);
 
-SK.formatPrice = (val, colored) => {
+cctest.formatPrice = (val, colored) => {
     let money = '$' + val.toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
     let style = colored ? (val >= 0 ? 'color:#73f21e;' : 'color:#f21e3c;') : "";
@@ -274,36 +274,36 @@ SK.formatPrice = (val, colored) => {
     return `<span style="${style}">${money}</span>`;
 };
 
-SK.update = () => {
+cctest.update = () => {
     if (Game.ObjectsById[5].amount == 0)
-        SK.initializeGoods();
+        cctest.initializeGoods();
 
-    let table = document.getElementById('SKTable');
+    let table = document.getElementById('cctestTable');
 
-    SK.minigameGoods.map((good, id) => {
-        let bought = SK.goods[id].bought;
+    cctest.minigameGoods.map((good, id) => {
+        let bought = cctest.goods[id].bought;
         if (good.stock == 0) {
-            SK.goods[id].bought = 0;
-            SK.goods[id].flow = SK.formatPrice(0, false);
-            SK.goods[id].fhigh = SK.formatPrice(0, false);
+            cctest.goods[id].bought = 0;
+            cctest.goods[id].flow = cctest.formatPrice(0, false);
+            cctest.goods[id].fhigh = cctest.formatPrice(0, false);
         }
-        SK.goods[id].low = SK.goods[id].low < good.val ? SK.goods[id].low : good.val ;
-        SK.goods[id].flow = SK.formatPrice(SK.goods[id].low, false);
-        SK.goods[id].high = SK.goods[id].high > good.val ? SK.goods[id].high : good.val ;
-        SK.goods[id].fhigh = SK.formatPrice(SK.goods[id].high, false);
-        SK.goods[id].cur = good.val;
-        SK.goods[id].fcur = SK.formatPrice(SK.goods[id].cur, false);
-        SK.goods[id].profit = (good.val * bought) - (SK.goods[id].value * bought);
-        SK.goods[id].formattedProfit = SK.formatPrice(SK.goods[id].profit, true);
+        cctest.goods[id].low = cctest.goods[id].low < good.val ? cctest.goods[id].low : good.val ;
+        cctest.goods[id].flow = cctest.formatPrice(cctest.goods[id].low, false);
+        cctest.goods[id].high = cctest.goods[id].high > good.val ? cctest.goods[id].high : good.val ;
+        cctest.goods[id].fhigh = cctest.formatPrice(cctest.goods[id].high, false);
+        cctest.goods[id].cur = good.val;
+        cctest.goods[id].fcur = cctest.formatPrice(cctest.goods[id].cur, false);
+        cctest.goods[id].profit = (good.val * bought) - (cctest.goods[id].value * bought);
+        cctest.goods[id].formattedProfit = cctest.formatPrice(cctest.goods[id].profit, true);
         
-        let ratio = (SK.goods[id].cur-SK.goods[id].low)/(SK.goods[id].high-SK.goods[id].low);
+        let ratio = (cctest.goods[id].cur-cctest.goods[id].low)/(cctest.goods[id].high-cctest.goods[id].low);
         let bcur= '';
         let acur= '';
         let opac= 0.4;
         if (ratio <0.2){
             bcur='~';
             acur=' ';
-            if (bought == 0 && SK.goods[id].high-SK.goods[id].low>25)
+            if (bought == 0 && cctest.goods[id].high-cctest.goods[id].low>25)
                 opac = 1;
         }
         else {
@@ -315,30 +315,30 @@ SK.update = () => {
                 acur=' ';
             }
         }
-        if (bought > 0 &&  SK.goods[id].cur > SK.goods[id].value+10)
+        if (bought > 0 &&  cctest.goods[id].cur > cctest.goods[id].value+10)
             opac = 1;
         
-        let row = table.querySelector(`#SK-${id}`);
+        let row = table.querySelector(`#cctest-${id}`);
         row.style.opacity = opac;
-        row.querySelector('.SK-low').innerHTML = SK.goods[id].flow;
-        row.querySelector('.SK-bcur').innerHTML = bcur;
-        row.querySelector('.SK-cur').innerHTML = SK.goods[id].fcur;
-        row.querySelector('.SK-acur').innerHTML = acur;
-        row.querySelector('.SK-high').innerHTML = SK.goods[id].fhigh;
-        row.querySelector('.SK-profit').innerHTML = SK.goods[id].formattedProfit;
+        row.querySelector('.cctest-low').innerHTML = cctest.goods[id].flow;
+        row.querySelector('.cctest-bcur').innerHTML = bcur;
+        row.querySelector('.cctest-cur').innerHTML = cctest.goods[id].fcur;
+        row.querySelector('.cctest-acur').innerHTML = acur;
+        row.querySelector('.cctest-high').innerHTML = cctest.goods[id].fhigh;
+        row.querySelector('.cctest-profit').innerHTML = cctest.goods[id].formattedProfit;
     });
 
-    let serialized = btoa(JSON.stringify(SK.goods));
-    SK.setCookie('SK_Data', serialized,180);
+    let serialized = btoa(JSON.stringify(cctest.goods));
+    cctest.setCookie('cctest_data', serialized,180);
 }
 
-SK.initializeGoods();
+cctest.initializeGoods();
 
-SK.minigameGoods.map((good, id) => {
+cctest.minigameGoods.map((good, id) => {
     let buy = (bought) => {
-        SK.goods[id].bought = bought;
-        SK.goods[id].value = bought == 0 ? 0 : good.val;
-        SK.update();
+        cctest.goods[id].bought = bought;
+        cctest.goods[id].value = bought == 0 ? 0 : good.val;
+        cctest.update();
     };
 
     let buttons = ['1','10','100','Max','-1','-10','-100','-All'];
@@ -352,13 +352,13 @@ SK.minigameGoods.map((good, id) => {
 });
 
 // Load previous numbers
-SK.saveData = SK.getCookie('SK_Data');
+cctest.saveData = cctest.getCookie('cctest_data');
 
-if (SK.saveData != '')
+if (cctest.saveData != '')
 try {
-    SK.goods = JSON.parse(atob(SK.saveData));
+    cctest.goods = JSON.parse(atob(cctest.saveData));
 } catch {
-    console.log("Failed to load SK save data.");
+    console.log("Failed to load cctest save data.");
 }
 
-SK.interval = setInterval(SK.update, 1000);
+cctest.interval = setInterval(cctest.update, 1000);
