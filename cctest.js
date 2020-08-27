@@ -288,11 +288,45 @@ cctest.update = () => {
         if (good.stock == 0)
             cctest.goods[id].bought = 0;
         cctest.goods[id].profit = (good.val * bought) - (cctest.goods[id].value * bought);
-        
+        cctest.goods[id].lowval = good.val < cctest.goods[id].lowval ? good.val : cctest.goods[id].lowval;
+        cctest.goods[id].highval = good.val > cctest.goods[id].highval ? good.val : cctest.goods[id].highval;
+
+        let ratio = (good.val-cctest.goods[id].low)/(cctest.goods[id].high-cctest.goods[id].low);
+        let bcur= '';
+        let acur= '';
+        let opac= 0.4;
+        if (ratio <0.2){
+            acur=' ';
+			if(ratio==0)
+				bcur='=';
+			else
+				bcur='~';
+				
+            if (bought == 0 && cctest.goods[id].high-cctest.goods[id].low>25)
+                opac = 1;
+        }
+        else {
+            if (ratio >0.8){
+                bcur=' ';
+				if(ratio==1)
+					acur='=';
+				else
+					acur='~';
+            else {
+                bcur=' ';
+                acur=' ';
+            }
+        }
+        if (bought > 0 &&  cctest.goods[id].cur > cctest.goods[id].value+10)
+            opac = 1;
+		
         let row = table.querySelector(`#cctest-${id}`);
-        row.style.opacity = bought > 0 ? 1 : .4;
-        row.querySelector('.cctest-low').innerHTML = cctest.goods[id].bought;
-        row.querySelector('.cctest-cur').innerHTML = cctest.formatPrice(cctest.goods[id].value, false);
+        row.style.opacity = opac;
+        row.querySelector('.cctest-low').innerHTML = cctest.formatPrice(cctest.goods[id].lowval, false);
+        row.querySelector('.cctest-bcur').innerHTML = bcur;
+        row.querySelector('.cctest-cur').innerHTML = cctest.formatPrice(good.val, false);
+        row.querySelector('.cctest-acur').innerHTML = acur;
+        row.querySelector('.cctest-high').innerHTML = cctest.formatPrice(cctest.goods[id].highval, false);
         row.querySelector('.cctest-profit').innerHTML = cctest.formatPrice(cctest.goods[id].profit, true);
     });
 
