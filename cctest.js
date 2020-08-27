@@ -57,7 +57,6 @@ let cctest = {
         }
         #cctestTable .cctest-progress {
 			width: 64px;
-			background-color: grey;
 		}
         #cctestTable .cctest-high {
             color: #a358ff;
@@ -253,6 +252,41 @@ cctest.formatPrice = (val, colored) => {
     }
 
     return `<span style="${style}">${money}</span>`;
+};
+
+cctest.updateProgressBar = (good,id,row) => {
+	let range = cctest.goods[id].highval-cctest.goods[id].lowval;
+	let width1 = 0;
+	let width2 = 0;
+	let color1 = "";
+	let color2 = "";
+	
+	if (cctest.goods[id].bought==0) {
+		width1 = 0;
+		width2 = (good.val-cctest.goods[id].lowval)/range*100;
+		color1 = "#000000";
+		color2 = "#4bb8f0";
+	}
+	else {
+		if(cctest.goods[id].value>good.val) {
+			width1 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
+			width2 = (cctest.goods[id].value-cctest.goods[id].lowval)/range*100;
+			color1 = "#4bb8f0";
+			color2 = "#f21e3c";
+		}
+		else {
+			width1 = (cctest.goods[id].value-cctest.goods[id].lowval)/(good.val-cctest.goods[id].lowval)*100;
+			width2 = (good.val-cctest.goods[id].lowval)/range*100;
+			color1 = "#4bb8f0";
+			color2 = "#73f21e";
+		}
+	}
+	let bar1 = row.querySelector('.cctest-bar1');
+	let bar2 = row.querySelector('.cctest-bar2');
+    bar1.style.width = width1 + "%";	
+    bar1.style.backgroundColor = "#73f21e";	
+    bar2.style.width = second + "%";	
+    bar2.style.backgroundColor = "#73f21e";	
 };
 
 cctest.update = () => {
