@@ -273,13 +273,13 @@ cctest.formatPrice = (val, colored) => {
     let money = "";
     let style = "" ;
     if(colored == true) {
-	money = val.toFixed(1).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-	style = "";
-    }
-    else {
         let mval = val/1000;
 	money = mval.toFixed(0).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "k";
 	style = val >= 0 ? 'color:#73f21e;' : 'color:#f21e3c;' ;
+    }
+    else {
+	money = val.toFixed(1).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+	style = "";
     }
 
     return `<span style="${style}">${money}</span>`;
