@@ -262,23 +262,23 @@ cctest.updateProgressBar = (good,id,row) => {
 	let color2 = "";
 	
 	if (cctest.goods[id].bought==0) {
-		width1 = 0;
-		width2 = (good.val-cctest.goods[id].lowval)/range*100;
-		color1 = "#000000";
-		color2 = "#4bb8f0";
+		width1 = (good.val-cctest.goods[id].lowval)/range*100;
+		width2 = 0;
+		color1 = "#4bb8f0";
+		color2 = "#000000";
 	}
 	else {
 		if(cctest.goods[id].value>good.val) {
-			width1 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
-			width2 = (cctest.goods[id].value-cctest.goods[id].lowval)/range*100;
-			color1 = "#4bb8f0";
-			color2 = "#f21e3c";
+			width1 = (cctest.goods[id].value-cctest.goods[id].lowval)/range*100;
+			width2 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
+			color1 = "#f21e3c";
+			color2 = "#4bb8f0";
 		}
 		else {
-			width1 = (cctest.goods[id].value-cctest.goods[id].lowval)/(good.val-cctest.goods[id].lowval)*100;
-			width2 = (good.val-cctest.goods[id].lowval)/range*100;
-			color1 = "#4bb8f0";
-			color2 = "#73f21e";
+			width1 = (good.val-cctest.goods[id].lowval)/range*100;
+			width2 = (cctest.goods[id].value-cctest.goods[id].lowval)/(good.val-cctest.goods[id].lowval)*100;
+			color1 = "#73f21e";
+			color2 = "#4bb8f0";
 		}
 	}
 	let bar1 = row.querySelector('.cctest-bar1');
