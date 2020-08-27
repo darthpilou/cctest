@@ -263,7 +263,7 @@ cctest.updateProgressBar = (good,id,row) => {
 	
 	if (cctest.goods[id].bought==0) {
 		width1 = (good.val-cctest.goods[id].lowval)/range*100;
-		width2 = 95;
+		width2 = 100-500/width1;
         	let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
 		if(ratio < 0.2) {
 			color1 = "#00ff00";
