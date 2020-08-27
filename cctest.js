@@ -317,7 +317,7 @@ cctest.update = () => {
                 acur=' ';
             }
         }
-        if (bought > 0 &&  cctest.goods[id].cur > cctest.goods[id].value+10)
+        if (bought > 0 &&  good.val > cctest.goods[id].value+20)
             opac = 1;
 		
         let row = table.querySelector(`#cctest-${id}`);
