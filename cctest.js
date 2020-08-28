@@ -273,27 +273,19 @@ cctest.updateProgressBar = (good,id,row) => {
 	if (cctest.goods[id].bought==0) {
 		width1 = (good.val-cctest.goods[id].lowval)/range*100;
 		width2 = 100-500/(width1+0.001);
-
-		if(ratio < 0.2) {
-			color1 = "#00ff00";
-			offset = alignright;
-			if (range>30) {
-				opac = 1;
-				rowback = "#FFFFFF"; 
-			}
-		} else if (ratio <0.5) {
-			color1 = "#ffff00";
-			offset = alignright;
-			if (range>30)
-				opac = 0.5;
-		} else if (ratio <0.8) {
-			color1 = "#ff9900";
-			offset = alignleft;
-		} else {
-			color1 = "#ff0000";
-			offset = alignleft;
-		}
 		color2 = "#1f2836";
+		
+		opac = 1-ratio;
+		color1 = "rgb(" + 255*ratio + "," + 255*opac + ", 0);";
+		if(range<30)
+			opac=0.1;
+		if(ratio < 0.2 && range>30)
+			rowback = "#FFFFFF"; 
+		
+		if(ratio < 0.5) 
+			offset = alignright;
+		else
+			offset = alignleft;
 	}
 	else {
 		opac = 0.3;
