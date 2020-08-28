@@ -277,7 +277,7 @@ cctest.updateProgressBar = (good,id,row) => {
 		
 		opac = 1-ratio;
 		color1 = "rgb(" + 255*ratio + "," + 255*opac + ", 0);";
-		if(range<30)
+		if(range<30 || opac<0.1)
 			opac=0.1;
 		if(ratio < 0.2 && range>30)
 			rowback = "#FFFFFF"; 
