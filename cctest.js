@@ -276,7 +276,7 @@ cctest.updateProgressBar = (good,id,row) => {
 				color1 = "#ff9900";
 			}
 		}
-		color2 = "#1f2836";
+		color2 = "#1c2431";
 	}
 	else {
 		if(cctest.goods[id].value>good.val) {
