@@ -330,19 +330,24 @@ cctest.update = () => {
         let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
         let opac= 0.1;
 	let rowback = "transparent";
-        if (bought > 0 && cctest.goods[id].profit > 0)
-		opac = 0.5;
-        if (bought == 0 && ratio <0.4 && cctest.goods[id].highval-cctest.goods[id].lowval>30)
-		opac = 0.5;
-        if (ratio <0.2 && bought == 0 && cctest.goods[id].highval-cctest.goods[id].lowval>30) {
-		opac = 1;
-	    	rowback = "#FFFFFF"; 
+	if (bought > 0) {
+		opac = 0.3;
+		if (cctest.goods[id].profit > 0)
+			opac = 0.5;
+		if (cctest.goods[id].profit > 25000) {
+			opac = 1;
+			rowback = "#FFFFFF";
+		}
 	}
-        if (bought > 0 &&  cctest.goods[id].profit > 25000) {
-		opac = 1;
-	    	rowback = "#FFFFFF";
+	else {
+		if (ratio <0.4 && cctest.goods[id].highval-cctest.goods[id].lowval>30)
+			opac = 0.5;
+		if (ratio <0.2 && cctest.goods[id].highval-cctest.goods[id].lowval>30) {
+			opac = 1;
+			rowback = "#FFFFFF"; 
+		}
 	}
-		
+	    
         let row = table.querySelector(`#cctest-${id}`);
 	row.style.background = rowback;
         row.style.opacity = opac;
