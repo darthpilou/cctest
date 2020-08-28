@@ -53,16 +53,17 @@ let cctest = {
             width: 32;
         }
         #cctestTable .cctest-low {
-            color: #4bf0b8;
+		color: #4bf0b8;
+		float: right
         }
         #cctestTable .cctest-progress {
-			width: 96px;
-		}
+		width: 96px;
+	}
         #cctestTable .cctest-high {
-            color: #a358ff;
+		color: #a358ff;
         }
         #cctestTable .cctest-profit {
-			float: right
+		float: right
         }
 		
 		
