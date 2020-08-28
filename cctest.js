@@ -263,6 +263,7 @@ cctest.updateProgressBar = (good,id,row) => {
 	let color2 = "";
 	let bar1 = row.querySelector('.cctest-bar1');
 	let bar2 = row.querySelector('.cctest-bar2');
+	let offset = "";
 	
 	if (cctest.goods[id].bought==0) {
 		width1 = (good.val-cctest.goods[id].lowval)/range*100;
@@ -270,13 +271,19 @@ cctest.updateProgressBar = (good,id,row) => {
         	let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
 		if(ratio < 0.2) {
 			color1 = "#00ff00";
+			offset = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		}
 		else {
 			if(ratio > 0.8) {
 				color1 = "#ff0000";
+				offset = "&nbsp;&nbsp;&nbsp;&nbsp;";
 			}
 			else {
 				color1 = "#ff9900";
+				if(ratio > 0.5)
+					offset = "&nbsp;&nbsp;&nbsp;&nbsp;";
+				else
+					offset = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 			}
 		}
 		color2 = "#1f2836";
@@ -299,7 +306,7 @@ cctest.updateProgressBar = (good,id,row) => {
     bar1.style.background = color1;	
     bar2.style.width = width2.toFixed(0) + "%";	
     bar2.style.background = color2;	
-    bar2.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + cctest.formatPrice(good.val,false);
+    bar2.innerHTML = offset + cctest.formatPrice(good.val,false);
 };
 
 cctest.update = () => {
