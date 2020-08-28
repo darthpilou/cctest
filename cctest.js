@@ -244,7 +244,7 @@ cctest.formatPrice = (val, colored) => {
     let style = "" ;
     if(colored == true) {
         let mval = val/1000;
-	money = mval.toFixed(0).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "k";
+	money = Math.abs(mval).toFixed(0).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "k";
 	style = val >= 0 ? 'color:#73f21e;' : 'color:#f21e3c;' ;
     }
     else {
