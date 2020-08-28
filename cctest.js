@@ -261,6 +261,8 @@ cctest.updateProgressBar = (good,id,row) => {
 	let width2 = 0;
 	let color1 = "";
 	let color2 = "";
+	let colorprog = "transparent";
+	let progress = row.querySelector('.cctest-progress');
 	let bar1 = row.querySelector('.cctest-bar1');
 	let bar2 = row.querySelector('.cctest-bar2');
 	let alignleft = "&nbsp;&nbsp;&nbsp;";
@@ -292,6 +294,7 @@ cctest.updateProgressBar = (good,id,row) => {
 	else {
 		opac = 0.3;
 		color2 = "#0f141a";
+		colorprog = "#405068";
 		if(cctest.goods[id].value>good.val) {
 			width1 = (cctest.goods[id].value-cctest.goods[id].lowval)/range*100;
 			width2 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
@@ -311,6 +314,7 @@ cctest.updateProgressBar = (good,id,row) => {
 	
 	row.style.background = rowback;
 	row.style.opacity = opac;
+	progress.style.background = colorprog;	
 	bar1.style.width = width1.toFixed(0) + "%";	
 	bar1.style.background = color1;	
 	bar2.style.width = width2.toFixed(0) + "%";	
