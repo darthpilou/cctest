@@ -276,9 +276,9 @@ cctest.updateProgressBar = (good,id,row) => {
 		color2 = "#1f2836";
 		
 		opac = 1-ratio;
-		int red = Math.round(255*ratio);
-		int green = Math.round(255*opac);
-		color1 = "rgb(" + red + "," + green  + ", 0)";
+		let red = Math.round(255*ratio);
+		let green = Math.round(255*opac);
+		color1 = "rgb(" + red.toFixed(0) + "," + green.toFixed(0)  + ", 0)";
 		if(range<30 || opac<0.1)
 			opac=0.1;
 		if(ratio < 0.2 && range>30)
