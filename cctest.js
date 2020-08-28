@@ -328,11 +328,11 @@ cctest.update = () => {
         cctest.goods[id].highval = good.val > cctest.goods[id].highval ? good.val : cctest.goods[id].highval;
 
         let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
-        let opac= 0.2;
+        let opac= 0.1;
         if (bought > 0 && cctest.goods[id].profit > 0)
-		opac = 0.6;
+		opac = 0.5;
         if (bought == 0 && ratio <0.4 && cctest.goods[id].highval-cctest.goods[id].lowval>30)
-		opac = 0.4;
+		opac = 0.5;
         if (ratio <0.2 && bought == 0 && cctest.goods[id].highval-cctest.goods[id].lowval>30)
 		opac = 1;
         if (bought > 0 &&  cctest.goods[id].profit > 25000)
