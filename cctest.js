@@ -273,7 +273,7 @@ cctest.updateProgressBar = (good,id,row) => {
 				color1 = "#ff0000";
 			}
 			else {
-				color1 = "#000ff";
+				color1 = "#0000ff";
 			}
 		}
 		color2 = "#1f2836";
