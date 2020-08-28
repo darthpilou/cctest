@@ -265,7 +265,6 @@ cctest.updateProgressBar = (good,id,row) => {
 	let width2 = 0;
 	let color1 = "";
 	let color2 = "";
-	let progress = row.querySelector('.cctest-progress');
 	let bar1 = row.querySelector('.cctest-bar1');
 	let bar2 = row.querySelector('.cctest-bar2');
 	
@@ -275,24 +274,13 @@ cctest.updateProgressBar = (good,id,row) => {
         	let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
 		if(ratio < 0.2) {
 			color1 = "#00ff00";
-			progress.innerhtml = cctest.formatPrice(good.val,false);
-			bar2.innerhtml = "";
 		}
 		else {
 			if(ratio > 0.8) {
 				color1 = "#ff0000";
-				bar2.innerhtml = cctest.formatPrice(good.val,false);
-				progress.innerhtml = "";
 			}
 			else {
 				color1 = "#ff9900";
-				if (ratio > 0.5) {
-					bar2.innerhtml = cctest.formatPrice(good.val,false);
-					progress.innerhtml = "";
-				} else {
-					progress.innerhtml = cctest.formatPrice(good.val,false);
-					bar2.innerhtml = "";
-				}
 			}
 		}
 		color2 = "#1f2836";
@@ -303,22 +291,19 @@ cctest.updateProgressBar = (good,id,row) => {
 			width2 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
 			color1 = "#f21e3c";
 			color2 = "#000000";
-			progress.innerhtml = cctest.formatPrice(good.val,false);
-			bar2.innerhtml = "";
 		}
 		else {
 			width1 = (good.val-cctest.goods[id].lowval)/range*100;
 			width2 = (cctest.goods[id].value-cctest.goods[id].lowval)/(good.val-cctest.goods[id].lowval)*100;
 			color1 = "#73f21e";
 			color2 = "#000000";
-			bar2.innerhtml = cctest.formatPrice(good.val,false);
-			progress.innerhtml = "";
 		}
 	}
     bar1.style.width = width1.toFixed(0) + "%";	
     bar1.style.background = color1;	
     bar2.style.width = width2.toFixed(0) + "%";	
     bar2.style.background = color2;	
+    bar2.innerhtml = cctest.formatPrice(good.val,false);
 };
 
 cctest.update = () => {
