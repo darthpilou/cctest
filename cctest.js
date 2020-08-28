@@ -290,7 +290,7 @@ cctest.updateProgressBar = (good,id,row) => {
 		if(range<30 || opac<0.1)
 			opac=0.1;
 		if(ratio < 0.2 && range>30)
-			rowback = "#FFFFFF"; 
+			rowback = "#3333FF"; 
 	}
 	else {
 		opac = 0.3;
@@ -307,7 +307,7 @@ cctest.updateProgressBar = (good,id,row) => {
 			color1 = "#73f21e";
 			if (cctest.goods[id].profit > 25000) {
 				opac = 1;
-				rowback = "#FFFFFF";
+				rowback = "#9933FF";
 			}
 		}
 	}
