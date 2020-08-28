@@ -276,20 +276,20 @@ cctest.updateProgressBar = (good,id,row) => {
 				color1 = "#ff9900";
 			}
 		}
-		color2 = "#090c10";
+		color2 = "#000000";
 	}
 	else {
 		if(cctest.goods[id].value>good.val) {
 			width1 = (cctest.goods[id].value-cctest.goods[id].lowval)/range*100;
 			width2 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
 			color1 = "#f21e3c";
-			color2 = "#1f2836";
+			color2 = "#000000";
 		}
 		else {
 			width1 = (good.val-cctest.goods[id].lowval)/range*100;
 			width2 = (cctest.goods[id].value-cctest.goods[id].lowval)/(good.val-cctest.goods[id].lowval)*100;
 			color1 = "#73f21e";
-			color2 = "#1f2836";
+			color2 = "#000000";
 		}
 	}
 	let bar1 = row.querySelector('.cctest-bar1');
