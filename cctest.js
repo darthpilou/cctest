@@ -267,37 +267,46 @@ cctest.updateProgressBar = (good,id,row) => {
 	let alignright = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 	let offset = "";
        	let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
+        let opac= 0.1;
+	let rowback = "transparent";
 
-	if(ratio > 0.5)
-		offset = alignleft;
-	else
-		offset = alignright;
-	
-	
 	if (cctest.goods[id].bought==0) {
 		width1 = (good.val-cctest.goods[id].lowval)/range*100;
 		width2 = 100-500/(width1+0.001);
+
 		if(ratio < 0.2) {
 			color1 = "#00ff00";
 			offset = alignright;
-		}
-		else {
-			if(ratio > 0.8) {
-				color1 = "#ff0000";
-				offset = alignleft;
+			if (cctest.goods[id].highval-cctest.goods[id].lowval>30) {
+				opac = 1;
+				rowback = "#FFFFFF"; 
 			}
-			else {
-				color1 = "#ff9900";
-			}
+		} else if (ratio <0.5) {
+			color1 = "#ffff00";
+			offset = alignright;
+			if (cctest.goods[id].highval-cctest.goods[id].lowval>30)
+				opac = 0.5;
+		} else if (ratio <0.8) {
+			color1 = "#ff9900";
+			offset = alignleft;
+		} else {
+			color1 = "#ff0000";
+			offset = alignleft;
 		}
 		color2 = "#1f2836";
 	}
 	else {
-		if(cctest.goods[id].value>good.val) {
+		opac = 0.3;
+		if(cctest.goods[id].profit > 0) {
+			opac = 0.5;
 			width1 = (cctest.goods[id].value-cctest.goods[id].lowval)/range*100;
 			width2 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
 			color1 = "#f21e3c";
 			color2 = "#000000";
+			if (cctest.goods[id].profit > 25000) {
+				opac = 1;
+				rowback = "#FFFFFF";
+			}
 		}
 		else {
 			width1 = (good.val-cctest.goods[id].lowval)/range*100;
@@ -306,11 +315,14 @@ cctest.updateProgressBar = (good,id,row) => {
 			color2 = "#000000";
 		}
 	}
-    bar1.style.width = width1.toFixed(0) + "%";	
-    bar1.style.background = color1;	
-    bar2.style.width = width2.toFixed(0) + "%";	
-    bar2.style.background = color2;	
-    bar2.innerHTML = offset + cctest.formatPrice(good.val,false);
+	
+	row.style.background = rowback;
+	row.style.opacity = opac;
+	bar1.style.width = width1.toFixed(0) + "%";	
+	bar1.style.background = color1;	
+	bar2.style.width = width2.toFixed(0) + "%";	
+	bar2.style.background = color2;	
+	bar2.innerHTML = offset + cctest.formatPrice(good.val,false);
 };
 
 cctest.update = () => {
@@ -327,32 +339,10 @@ cctest.update = () => {
         cctest.goods[id].lowval = good.val < cctest.goods[id].lowval ? good.val : cctest.goods[id].lowval;
         cctest.goods[id].highval = good.val > cctest.goods[id].highval ? good.val : cctest.goods[id].highval;
 
-        let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
-        let opac= 0.1;
-	let rowback = "transparent";
-	if (bought > 0) {
-		opac = 0.3;
-		if (cctest.goods[id].profit > 0)
-			opac = 0.5;
-		if (cctest.goods[id].profit > 25000) {
-			opac = 1;
-			rowback = "#FFFFFF";
-		}
-	}
-	else {
-		if (ratio <0.4 && cctest.goods[id].highval-cctest.goods[id].lowval>30)
-			opac = 0.5;
-		if (ratio <0.2 && cctest.goods[id].highval-cctest.goods[id].lowval>30) {
-			opac = 1;
-			rowback = "#FFFFFF"; 
-		}
-	}
-	    
         let row = table.querySelector(`#cctest-${id}`);
-	row.style.background = rowback;
-        row.style.opacity = opac;
-        row.querySelector('.cctest-low').innerHTML = cctest.formatPrice(cctest.goods[id].lowval, false);
+	    
 	cctest.updateProgressBar(good,id,row);
+        row.querySelector('.cctest-low').innerHTML = cctest.formatPrice(cctest.goods[id].lowval, false);
         row.querySelector('.cctest-high').innerHTML = cctest.formatPrice(cctest.goods[id].highval, false);
         row.querySelector('.cctest-profit').innerHTML = cctest.goods[id].bought > 0 ? cctest.formatPrice(cctest.goods[id].profit, true) : "";
     });
