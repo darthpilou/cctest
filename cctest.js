@@ -270,6 +270,11 @@ cctest.updateProgressBar = (good,id,row) => {
         let opac= 0.1;
 	let rowback = "transparent";
 
+	if(ratio < 0.5) 
+		offset = alignright;
+	else
+		offset = alignleft;
+	
 	if (cctest.goods[id].bought==0) {
 		width1 = (good.val-cctest.goods[id].lowval)/range*100;
 		width2 = 100-500/(width1+0.001);
@@ -283,11 +288,6 @@ cctest.updateProgressBar = (good,id,row) => {
 			opac=0.1;
 		if(ratio < 0.2 && range>30)
 			rowback = "#FFFFFF"; 
-		
-		if(ratio < 0.5) 
-			offset = alignright;
-		else
-			offset = alignleft;
 	}
 	else {
 		opac = 0.3;
