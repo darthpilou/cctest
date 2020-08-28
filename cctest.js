@@ -57,11 +57,7 @@ let cctest = {
 		float: right
         }
         #cctestTable .cctest-progress {
-            	color: #fff;
 		width: 96px;
-	}
-        #cctestTable .cctest-bar2 {
-            	color: #fff;
 	}
         #cctestTable .cctest-high {
 		color: #a358ff;
