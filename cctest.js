@@ -331,7 +331,7 @@ cctest.update = () => {
         let opac= 0.4;
         if (ratio <0.2 && bought == 0 && cctest.goods[id].highval-cctest.goods[id].lowval>25)
 			opac = 1;
-        if (bought > 0 &&  good.val > cctest.goods[id].value+20)
+        if (bought > 0 &&  cctest.goods[id].profit > 25000)
             opac = 1;
 		
         let row = table.querySelector(`#cctest-${id}`);
