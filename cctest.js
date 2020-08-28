@@ -263,27 +263,31 @@ cctest.updateProgressBar = (good,id,row) => {
 	let color2 = "";
 	let bar1 = row.querySelector('.cctest-bar1');
 	let bar2 = row.querySelector('.cctest-bar2');
-	let offset = "";
+	let alignleft = "&nbsp;&nbsp;&nbsp;&nbsp;";
+	let alignright = "&nbsp;&nbsp;&nbsp;";
+	let offset = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+       	let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
+
+	if(ratio > 0.5)
+		offset = alignleft;
+	else
+		offset = alignright;
+	
 	
 	if (cctest.goods[id].bought==0) {
 		width1 = (good.val-cctest.goods[id].lowval)/range*100;
 		width2 = 100-500/(width1+0.001);
-        	let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
 		if(ratio < 0.2) {
 			color1 = "#00ff00";
-			offset = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			offset = alignright;
 		}
 		else {
 			if(ratio > 0.8) {
 				color1 = "#ff0000";
-				offset = "&nbsp;&nbsp;&nbsp;&nbsp;";
+				offset = alignleft;
 			}
 			else {
 				color1 = "#ff9900";
-				if(ratio > 0.5)
-					offset = "&nbsp;&nbsp;&nbsp;&nbsp;";
-				else
-					offset = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 			}
 		}
 		color2 = "#1f2836";
