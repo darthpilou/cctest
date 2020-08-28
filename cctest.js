@@ -299,7 +299,7 @@ cctest.updateProgressBar = (good,id,row) => {
     bar1.style.background = color1;	
     bar2.style.width = width2.toFixed(0) + "%";	
     bar2.style.background = color2;	
-    bar2.innerHTML = cctest.formatPrice(good.val,false);
+    bar2.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + cctest.formatPrice(good.val,false);
 };
 
 cctest.update = () => {
