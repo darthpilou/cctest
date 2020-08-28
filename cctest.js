@@ -298,21 +298,21 @@ cctest.updateProgressBar = (good,id,row) => {
 	else {
 		opac = 0.3;
 		if(cctest.goods[id].value>good.val) {
-			opac = 0.5;
 			width1 = (cctest.goods[id].value-cctest.goods[id].lowval)/range*100;
 			width2 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
 			color1 = "#f21e3c";
+			color2 = "#000000";
+		}
+		else {
+			opac = 0.5;
+			width1 = (good.val-cctest.goods[id].lowval)/range*100;
+			width2 = (cctest.goods[id].value-cctest.goods[id].lowval)/(good.val-cctest.goods[id].lowval)*100;
+			color1 = "#73f21e";
 			color2 = "#000000";
 			if (cctest.goods[id].profit > 25000) {
 				opac = 1;
 				rowback = "#FFFFFF";
 			}
-		}
-		else {
-			width1 = (good.val-cctest.goods[id].lowval)/range*100;
-			width2 = (cctest.goods[id].value-cctest.goods[id].lowval)/(good.val-cctest.goods[id].lowval)*100;
-			color1 = "#73f21e";
-			color2 = "#000000";
 		}
 	}
 	
