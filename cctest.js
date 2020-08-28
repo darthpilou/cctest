@@ -278,7 +278,7 @@ cctest.updateProgressBar = (good,id,row) => {
 	if (cctest.goods[id].bought==0) {
 		width1 = (good.val-cctest.goods[id].lowval)/range*100;
 		width2 = 100-500/(width1+0.001);
-		color2 = "#0f141a";
+		color2 = "#405068";
 		
 		opac = 1-ratio;
 		let red = Math.round(255*ratio);
@@ -291,7 +291,7 @@ cctest.updateProgressBar = (good,id,row) => {
 	}
 	else {
 		opac = 0.3;
-		color2 = "#c0c0c0";
+		color2 = "#0f141a";
 		if(cctest.goods[id].value>good.val) {
 			width1 = (cctest.goods[id].value-cctest.goods[id].lowval)/range*100;
 			width2 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
