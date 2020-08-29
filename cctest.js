@@ -255,30 +255,43 @@ cctest.formatPrice = (val, colored) => {
     return `<span style="${style}">${money}</span>`;
 };
 
-cctest.updateProgressBar = (good,id,row) => {
-	let range = cctest.goods[id].highval-cctest.goods[id].lowval;
+cctest.updateDisplay = (good,id) => {
+	let row = document.getElementById('cctestTable').querySelector(`#cctest-${id}`);
+	let low = row.querySelector('.cctest-low');
+	let high = row.querySelector('.cctest-high');
+	let progress = row.querySelector('.cctest-progress');
+	let bar1 = row.querySelector('.cctest-bar1');
+	let bar2 = row.querySelector('.cctest-bar2');
+	let profit = row.querySelector('.cctest-profit');
+
+	let curgood = cctest.goods[id];
+	let range = curgood.highval-curgood.lowval;
+	let ratio = (good.val-curgood.lowval)/(curgood.highval-curgood.lowval);
+
 	let width1 = 0;
 	let width2 = 0;
 	let color1 = "";
 	let color2 = "";
 	let colorprog = "transparent";
-	let progress = row.querySelector('.cctest-progress');
-	let bar1 = row.querySelector('.cctest-bar1');
-	let bar2 = row.querySelector('.cctest-bar2');
 	let alignleft = "&nbsp;&nbsp;&nbsp;";
 	let alignright = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 	let offset = "";
-       	let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
-        let opac= 0.1;
+	let opac= 0.1;
 	let rowback = "transparent";
+	let profitHTML = "";
+
+	let buy = (b) => {
+		curgood.bought = b;
+		curgood.value = b == 0 ? 0 : good.val;
+	};
 
 	if(ratio < 0.5) 
 		offset = alignright;
 	else
 		offset = alignleft;
 	
-	if (cctest.goods[id].bought==0) {
-		width1 = (good.val-cctest.goods[id].lowval)/range*100;
+	if (curgood.bought==0) {
+		width1 = (good.val-curgood.lowval)/range*100;
 		width2 = 100-500/(width1+0.001);
 		color2 = "#0f141a";
 		colorprog = "#405068";
@@ -289,25 +302,31 @@ cctest.updateProgressBar = (good,id,row) => {
 		color1 = "rgb(" + red.toFixed(0) + "," + green.toFixed(0)  + ", 0)";
 		if(range<30 || opac<0.1)
 			opac=0.1;
-		if(ratio < 0.2 && range>30)
+		if(ratio < 0.25 && range>30) {
 			rowback = "#3333FF"; 
+			let _id = 'bankGood-'+ id +'_Max';
+			document.getElementById(_id).click();
+		}
 	}
 	else {
 		opac = 0.3;
 		color2 = "#405068";
-		if(cctest.goods[id].value>good.val) {
-			width1 = (cctest.goods[id].value-cctest.goods[id].lowval)/range*100;
-			width2 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
+		profitHTML = cctest.formatPrice(curgood.profit,true);
+		if(curgood.value>good.val) {
+			width1 = (curgood.value-curgood.lowval)/range*100;
+			width2 = (good.val-curgood.lowval)/(curgood.value-curgood.lowval)*100;
 			color1 = "#f21e3c";
 		}
 		else {
 			opac = 0.5;
-			width1 = (good.val-cctest.goods[id].lowval)/range*100;
-			width2 = (cctest.goods[id].value-cctest.goods[id].lowval)/(good.val-cctest.goods[id].lowval)*100;
+			width1 = (good.val-curgood.lowval)/range*100;
+			width2 = (curgood.value-curgood.lowval)/(good.val-curgood.lowval)*100;
 			color1 = "#73f21e";
-			if (cctest.goods[id].profit > 25000) {
+			if (ratio > 0.5) {
 				opac = 1;
 				rowback = "#9933FF";
+				let _id = 'bankGood-'+ id +'_-All';
+				document.getElementById(_id).click();
 			}
 		}
 	}
@@ -320,15 +339,15 @@ cctest.updateProgressBar = (good,id,row) => {
 	bar2.style.width = width2.toFixed(0) + "%";	
 	bar2.style.background = color2;	
 	bar2.innerHTML = offset + cctest.formatPrice(good.val,false);
+	low.innerHTML = cctest.formatPrice(curgood.lowval, false);
+	high.innerHTML = cctest.formatPrice(curgood.highval, false);
+	profit.innerHTML = profitHTML;
 };
 
 cctest.update = () => {
     if (cctest.bank.amount == 0)
         cctest.initializeGoods();
-
-    let table = document.getElementById('cctestTable');
-
-    cctest.minigameGoods.map((good, id) => {
+		cctest.minigameGoods.map((good, id) => {
         let bought = cctest.goods[id].bought;
         if (good.stock == 0)
             cctest.goods[id].bought = 0;
@@ -336,12 +355,7 @@ cctest.update = () => {
         cctest.goods[id].lowval = good.val < cctest.goods[id].lowval ? good.val : cctest.goods[id].lowval;
         cctest.goods[id].highval = good.val > cctest.goods[id].highval ? good.val : cctest.goods[id].highval;
 
-        let row = table.querySelector(`#cctest-${id}`);
-	    
-	cctest.updateProgressBar(good,id,row);
-        row.querySelector('.cctest-low').innerHTML = cctest.formatPrice(cctest.goods[id].lowval, false);
-        row.querySelector('.cctest-high').innerHTML = cctest.formatPrice(cctest.goods[id].highval, false);
-        row.querySelector('.cctest-profit').innerHTML = cctest.goods[id].bought > 0 ? cctest.formatPrice(cctest.goods[id].profit, true) : "";
+		cctest.updateDisplay(good,id);
     });
 
     let serialized = btoa(JSON.stringify(cctest.goods));
