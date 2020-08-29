@@ -335,7 +335,7 @@ cctest.updateDisplay = (good,id) => {
 			if (ratio > 0.5) {
 				opac = 1;
 				rowback = "#9933FF";
-				if( cctest.automate == true && cctest.goods[id].up == false && cctest.goods[id].streak >2 && cctest.goods[id].value > good.val) {
+				if( cctest.automate == true && cctest.goods[id].up == false && cctest.goods[id].streak >2 && cctest.goods[id].value < good.val) {
 					let _id = 'bankGood-'+ id +'_-All';
 					document.getElementById(_id).click();
 					buy(0);
