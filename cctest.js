@@ -335,7 +335,7 @@ cctest.updateDisplay = (good,id) => {
 			if (ratio > 0.5) {
 				opac = 1;
 				rowback = "#9933FF";
-				if( cctest.automate == true && cctest.goods[id].up == false && cctest.goods[id].streak >2) {
+				if( cctest.automate == true && cctest.goods[id].up == false && cctest.goods[id].streak >2 && cctest.goods[id].value > good.val) {
 					let _id = 'bankGood-'+ id +'_-All';
 					document.getElementById(_id).click();
 					buy(0);
@@ -394,6 +394,19 @@ cctest.update = () => {
 
     let serialized = btoa(JSON.stringify(cctest.goods));
     cctest.setCookie('cctest_Data', serialized);
+}
+
+cctest.resetThresholds = () => {
+	cctest.minigameGoods.map((good, id) => {
+		let newlow = Math.max(cctest.goods[id].lowval,good.val-10);
+		let newhigh = Math.min(cctest.goods[id].highval,good.val+10);
+		if ( cctest.goods[id].value > 0.01 ) {
+			newlow = Math.max(cctest.goods[id].lowval,Math.min(cctest.goods[id].value,good.val)-10);
+			newhigh = Math.min(cctest.goods[id].highval,Math.max(cctest.goods[id].value,good.val)+10);
+		}
+		cctest.goods[id].lowval = newlow;
+		cctest.goods[id].highval = newhigh;
+	});
 }
 
 cctest.initializeGoods();
