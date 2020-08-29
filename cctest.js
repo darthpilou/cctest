@@ -311,7 +311,7 @@ cctest.updateDisplay = (good,id) => {
 			if( cctest.automate == true && cctest.goods[id].up == true && cctest.goods[id].streak >1) {
 				let _id = 'bankGood-'+ id +'_Max';
 				document.getElementById(_id).click();
-				cctest.goods[id].bought=good.stock;
+				buy(good.stock);
 				console.log("Bought " + cctest.goods[id].name + " for " + good.val);
 			}
 		}
@@ -336,7 +336,7 @@ cctest.updateDisplay = (good,id) => {
 				if( cctest.automate == true && cctest.goods[id].up == false && cctest.goods[id].streak >2) {
 					let _id = 'bankGood-'+ id +'_-All';
 					document.getElementById(_id).click();
-					cctest.goods[id].bought=0;
+					buy(0);
 					console.log("Sold " + cctest.goods[id].name + " for " + good.val);
 				}
 			}
