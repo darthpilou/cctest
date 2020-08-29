@@ -306,6 +306,7 @@ cctest.updateDisplay = (good,id) => {
 			rowback = "#3333FF"; 
 			let _id = 'bankGood-'+ id +'_Max';
 			document.getElementById(_id).click();
+    			console.log("Bought " + ctest.goods[id].name + " for " + good.val);
 		}
 	}
 	else {
@@ -327,6 +328,7 @@ cctest.updateDisplay = (good,id) => {
 				rowback = "#9933FF";
 				let _id = 'bankGood-'+ id +'_-All';
 				document.getElementById(_id).click();
+    				console.log("Sold " + ctest.goods[id].name + " for " + good.val);
 			}
 		}
 	}
