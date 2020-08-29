@@ -1,4 +1,4 @@
-let EZStock = {
+let cctest = {
     setCookie: (cname, cvalue, exdays) => {
         var d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -22,7 +22,7 @@ let EZStock = {
     },
     saveData: {},
     bank: {},
-	automate: false,
+	automate: true,
     minigameGoods: {},
     goods: {},
     initializeGoods: {},
@@ -35,9 +35,9 @@ let EZStock = {
     canvasLastTop: 0,
     canvasLastLeft: 0,
     htmlTemplate: `
-<div id="EZStock-container" style="position:absolute; left:24px;">
+<div id="cctest-container" style="position:absolute; left:24px;">
     <style>
-        #EZStockTable {
+        #cctestTable {
             z-index: 10000;
             display: block;
             position: relative;
@@ -47,148 +47,148 @@ let EZStock = {
             font-weight: bold;
             padding: 2px;
         }
-        #EZStockTable tr {
+        #cctestTable tr {
             margin-bottom: 1px;
         }
-        #EZStockTable td {
+        #cctestTable td {
             width: 32;
         }
-        #EZStockTable .EZStock-low {
+        #cctestTable .cctest-low {
 		color: #4bf0b8;
 		float: right
         }
-        #EZStockTable .EZStock-progress {
+        #cctestTable .cctest-progress {
 		width: 96px;
 	}
-        #EZStockTable .EZStock-high {
+        #cctestTable .cctest-high {
 		color: #a358ff;
         }
-        #EZStockTable .EZStock-profit {
+        #cctestTable .cctest-profit {
 		float: right
         }
 		
 		
     </style>
-    <table id="EZStockTable">
-        <tr id="EZStock-0" style="opacity:.4">
+    <table id="cctestTable">
+        <tr id="cctest-0" style="opacity:.4">
             <td>CRL</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-1" style="opacity:.4">
+        <tr id="cctest-1" style="opacity:.4">
             <td>CHC</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-2" style="opacity:.4">
+        <tr id="cctest-2" style="opacity:.4">
             <td>BTR</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-3" style="opacity:.4">
+        <tr id="cctest-3" style="opacity:.4">
             <td>SUG</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-4" style="opacity:.4">
+        <tr id="cctest-4" style="opacity:.4">
             <td>NUT</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-5" style="opacity:.4">
+        <tr id="cctest-5" style="opacity:.4">
             <td>SLT</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-6" style="opacity:.4">
+        <tr id="cctest-6" style="opacity:.4">
             <td>VNL</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-7" style="opacity:.4">
+        <tr id="cctest-7" style="opacity:.4">
             <td>EGG</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-8" style="opacity:.4">
+        <tr id="cctest-8" style="opacity:.4">
             <td>CNM</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-9" style="opacity:.4">
+        <tr id="cctest-9" style="opacity:.4">
             <td>CRM</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-10" style="opacity:.4">
+        <tr id="cctest-10" style="opacity:.4">
             <td>JAM</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-11" style="opacity:.4">
+        <tr id="cctest-11" style="opacity:.4">
             <td>WCH</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-12" style="opacity:.4">
+        <tr id="cctest-12" style="opacity:.4">
             <td>HNY</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-13" style="opacity:.4">
+        <tr id="cctest-13" style="opacity:.4">
             <td>CKI</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
-        <tr id="EZStock-14" style="opacity:.4">
+        <tr id="cctest-14" style="opacity:.4">
             <td>RCP</td>
-            <td class="EZStock-ba"><span class="EZStock-low">$0.00</span></td><td>&nbsp;</td>
-            <td><div class="EZStock-progress"><div class="EZStock-bar1"><div class="EZStock-bar2">&nbsp;</div></div></div></td>
-            <td><span class="EZStock-high">$0.00</span></td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
             <td><span>|</span></td>
-            <td><span class="EZStock-profit">$0.00</span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
         </tr>
     </table>
 </div>
@@ -196,11 +196,11 @@ let EZStock = {
 };
 
 document.getElementById('sectionMiddle')
-    .insertAdjacentHTML('beforeend', EZStock.htmlTemplate);
+    .insertAdjacentHTML('beforeend', cctest.htmlTemplate);
 
-EZStock.initializeGoods = () => {
-    EZStock.minigameGoods.map((good, id) => {
-        EZStock.goods[id] = {
+cctest.initializeGoods = () => {
+    cctest.minigameGoods.map((good, id) => {
+        cctest.goods[id] = {
 		name: good.name,
 		lowval: 1000,
 		highval: 0,
@@ -214,9 +214,9 @@ EZStock.initializeGoods = () => {
     });
 };
 
-EZStock.bank = Game.ObjectsById[5];
-EZStock.minigameGoods = EZStock.bank.minigame.goodsById;
-EZStock.goods = Array(EZStock.minigameGoods.length);
+cctest.bank = Game.ObjectsById[5];
+cctest.minigameGoods = cctest.bank.minigame.goodsById;
+cctest.goods = Array(cctest.minigameGoods.length);
 
 // Attach position of div to canvas
 // This is done this way because putting this table near the canvas breaks
@@ -229,21 +229,21 @@ let getOffset = (el) => {
     };
 };
 
-EZStock.drawLoop = () => {
-    if (Game.onMenu != "" || EZStock.bank.amount == 0 || EZStock.bank.muted || !EZStock.bank.onMinigame)
-        document.getElementById('EZStock-container').style.visibility = 'hidden';
+cctest.drawLoop = () => {
+    if (Game.onMenu != "" || cctest.bank.amount == 0 || cctest.bank.muted || !cctest.bank.onMinigame)
+        document.getElementById('cctest-container').style.visibility = 'hidden';
     else
-        document.getElementById('EZStock-container').style.visibility = 'visible';
+        document.getElementById('cctest-container').style.visibility = 'visible';
 
     var canvasRect = getOffset(document.getElementById('bankGraph'));
-    if (canvasRect.top == EZStock.canvasLastTop)
+    if (canvasRect.top == cctest.canvasLastTop)
         return;
     
-    document.getElementById('EZStock-container').style.top = canvasRect.top + 'px';
+    document.getElementById('cctest-container').style.top = canvasRect.top + 'px';
 };
-EZStock.drawInterval = setInterval(EZStock.drawLoop, 10);
+cctest.drawInterval = setInterval(cctest.drawLoop, 10);
 
-EZStock.formatPrice = (val, colored) => {
+cctest.formatPrice = (val, colored) => {
     let money = "";
     let style = "" ;
     if(colored == true) {
@@ -259,16 +259,16 @@ EZStock.formatPrice = (val, colored) => {
     return `<span style="${style}">${money}</span>`;
 };
 
-EZStock.updateDisplay = (good,id) => {
-	let row = document.getElementById('EZStockTable').querySelector(`#EZStock-${id}`);
-	let low = row.querySelector('.EZStock-low');
-	let high = row.querySelector('.EZStock-high');
-	let progress = row.querySelector('.EZStock-progress');
-	let bar1 = row.querySelector('.EZStock-bar1');
-	let bar2 = row.querySelector('.EZStock-bar2');
-	let profit = row.querySelector('.EZStock-profit');
+cctest.updateDisplay = (good,id) => {
+	let row = document.getElementById('cctestTable').querySelector(`#cctest-${id}`);
+	let low = row.querySelector('.cctest-low');
+	let high = row.querySelector('.cctest-high');
+	let progress = row.querySelector('.cctest-progress');
+	let bar1 = row.querySelector('.cctest-bar1');
+	let bar2 = row.querySelector('.cctest-bar2');
+	let profit = row.querySelector('.cctest-profit');
 
-	let curgood = EZStock.goods[id];
+	let curgood = cctest.goods[id];
 	let range = curgood.highval-curgood.lowval;
 	let ratio = (good.val-curgood.lowval)/(curgood.highval-curgood.lowval);
 
@@ -309,7 +309,7 @@ EZStock.updateDisplay = (good,id) => {
 			opac=0.1;
 		if(ratio < 0.25 && range>30) {
 			rowback = "#3333FF"; 
-			if( EZStock.automate == true && curgood.up == true && curgood.streak >1) {
+			if( cctest.automate == true && curgood.up == true && curgood.streak >1) {
 				let _id = 'bankGood-'+ id +'_Max';
 				document.getElementById(_id).click();
 				curgood.bought=good.stock;
@@ -320,7 +320,7 @@ EZStock.updateDisplay = (good,id) => {
 	else {
 		opac = 0.3;
 		color2 = "#405068";
-		profitHTML = EZStock.formatPrice(curgood.profit,true);
+		profitHTML = cctest.formatPrice(curgood.profit,true);
 		if(curgood.value>good.val) {
 			width1 = (curgood.value-curgood.lowval)/range*100;
 			width2 = (good.val-curgood.lowval)/(curgood.value-curgood.lowval)*100;
@@ -334,11 +334,11 @@ EZStock.updateDisplay = (good,id) => {
 			if (ratio > 0.5) {
 				opac = 1;
 				rowback = "#9933FF";
-				if( EZStock.automate == true && curgood.up == false && curgood.streak >2) {
+				if( cctest.automate == true && curgood.up == false && curgood.streak >2) {
 					let _id = 'bankGood-'+ id +'_-All';
 					document.getElementById(_id).click();
 					curgood.bought=0;
-					console.log("Sold " + EZStock.goods[id].name + " for " + good.val);
+					console.log("Sold " + cctest.goods[id].name + " for " + good.val);
 				}
 			}
 		}
@@ -352,22 +352,22 @@ EZStock.updateDisplay = (good,id) => {
 	bar2.style.width = width2.toFixed(0) + "%";	
 	bar2.style.background = color2;	
 	bar2.innerHTML = offset + dirchar;
-	low.innerHTML = EZStock.formatPrice(curgood.lowval, false);
-	high.innerHTML = EZStock.formatPrice(curgood.highval, false);
+	low.innerHTML = cctest.formatPrice(curgood.lowval, false);
+	high.innerHTML = cctest.formatPrice(curgood.highval, false);
 	profit.innerHTML = profitHTML;
 };
 
-EZStock.update = () => {
-    if (EZStock.bank.amount == 0)
-        EZStock.initializeGoods();
-		EZStock.minigameGoods.map((good, id) => {
-        let bought = EZStock.goods[id].bought;
+cctest.update = () => {
+    if (cctest.bank.amount == 0)
+        cctest.initializeGoods();
+		cctest.minigameGoods.map((good, id) => {
+        let bought = cctest.goods[id].bought;
         if (good.stock == 0)
-            EZStock.goods[id].bought = 0;
-        EZStock.goods[id].profit = (good.val * bought) - (EZStock.goods[id].value * bought);
-        EZStock.goods[id].lowval = good.val < EZStock.goods[id].lowval ? good.val : EZStock.goods[id].lowval;
-        EZStock.goods[id].highval = good.val > EZStock.goods[id].highval ? good.val : EZStock.goods[id].highval;
-		let thisgood = EZStock.goods[id];
+            cctest.goods[id].bought = 0;
+        cctest.goods[id].profit = (good.val * bought) - (cctest.goods[id].value * bought);
+        cctest.goods[id].lowval = good.val < cctest.goods[id].lowval ? good.val : cctest.goods[id].lowval;
+        cctest.goods[id].highval = good.val > cctest.goods[id].highval ? good.val : cctest.goods[id].highval;
+		let thisgood = cctest.goods[id];
 		let cur = Math.round(parseFloat(good.val)*100);
 		if( Math.abs(thisgood.previous-cur)>1) {
 			if(thisgood.previous > cur) {
@@ -387,20 +387,20 @@ EZStock.update = () => {
 			thisgood.previous = cur;
 		}
 
-		EZStock.updateDisplay(good,id);
+		cctest.updateDisplay(good,id);
     });
 
-    let serialized = btoa(JSON.stringify(EZStock.goods));
-    EZStock.setCookie('EZStock_Data', serialized);
+    let serialized = btoa(JSON.stringify(cctest.goods));
+    cctest.setCookie('cctest_Data', serialized);
 }
 
-EZStock.initializeGoods();
+cctest.initializeGoods();
 
-EZStock.minigameGoods.map((good, id) => {
+cctest.minigameGoods.map((good, id) => {
     let buy = (bought) => {
-        EZStock.goods[id].bought = bought;
-        EZStock.goods[id].value = bought == 0 ? 0 : good.val;
-        EZStock.update();
+        cctest.goods[id].bought = bought;
+        cctest.goods[id].value = bought == 0 ? 0 : good.val;
+        cctest.update();
     };
 
     let buttons = ['1','10','100','Max','-1','-10','-100','-All'];
@@ -414,13 +414,13 @@ EZStock.minigameGoods.map((good, id) => {
 });
 
 // Load previous numbers
-EZStock.saveData = EZStock.getCookie('EZStock_Data');
+cctest.saveData = cctest.getCookie('cctest_Data');
 
-if (EZStock.saveData != '')
+if (cctest.saveData != '')
 try {
-    EZStock.goods = JSON.parse(atob(EZStock.saveData));
+    cctest.goods = JSON.parse(atob(cctest.saveData));
 } catch {
-    console.log("Failed to load EZStock save data.");
+    console.log("Failed to load cctest save data.");
 }
 
-EZStock.interval = setInterval(EZStock.update, 1000);
+cctest.interval = setInterval(cctest.update, 1000);
