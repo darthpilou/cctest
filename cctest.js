@@ -312,7 +312,9 @@ cctest.updateDisplay = (good,id) => {
 				let _id = 'bankGood-'+ id +'_Max';
 				document.getElementById(_id).click();
 				buy(good.stock);
-				console.log("Bought " + cctest.goods[id].name + " for " + good.val);
+				let today = new Date();
+				let time = today.getHours() + ":" + today.getMinutes();
+				console.log(time + " bought " + cctest.goods[id].name + " for " + good.val);
 			}
 		}
 	}
@@ -337,7 +339,9 @@ cctest.updateDisplay = (good,id) => {
 					let _id = 'bankGood-'+ id +'_-All';
 					document.getElementById(_id).click();
 					buy(0);
-					console.log("Sold " + cctest.goods[id].name + " for " + good.val);
+					let today = new Date();
+					let time = today.getHours() + ":" + today.getMinutes();
+					console.log(time + " sold " + cctest.goods[id].name + " for " + good.val);
 				}
 			}
 		}
