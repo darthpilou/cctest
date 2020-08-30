@@ -354,6 +354,8 @@ cctest.automated = (good,id) => {
 	};
 
 	if (curgood.bought==0) {
+		if (id == 2)
+			console.log("range:" + range + " curgood.delta:" + curgood.delta + " ratio:" + ratio + " thresh" + curgood.threshold + " streak:" + curgood.streak + " good.val:" +  good.val);
 		let buygood = false; 
 		if(range>30) {
 			if ( Math.abs(good.val-curgood.lowval) <0.01 )
