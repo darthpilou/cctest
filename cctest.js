@@ -363,11 +363,11 @@ cctest.automated = (good,id) => {
 			}
 		}
 		if (buygood == true) {
-			let _id = 'bankGood-'+ id +'_Max';
-			document.getElementById(_id).click();
 			let today = new Date();
 			let time = today.getHours() + ":" + today.getMinutes();
 			console.log(time + " bought " + cctest.goods[id].name + " for " + good.val.toFixed(2).toString());
+			let _id = 'bankGood-'+ id +'_Max';
+			document.getElementById(_id).click();
 			buy(good.stock);
 		}
 	}
@@ -387,12 +387,12 @@ cctest.automated = (good,id) => {
 					sellgood =true;
 			}
 			if (sellgood == true) {
-				let _id = 'bankGood-'+ id +'_-All';
-				document.getElementById(_id).click();
 				let today = new Date();
 				let time = today.getHours() + ":" + today.getMinutes();
 				let profit = curgood.profit/1000; 
 				console.log(time + " sold " + curgood.name + " for " + good.val.toFixed(2).toString() + " profit:" + profit.toFixed(0).toString() + "k");
+				let _id = 'bankGood-'+ id +'_-All';
+				document.getElementById(_id).click();
 				buy(0);
 			}
 		}
