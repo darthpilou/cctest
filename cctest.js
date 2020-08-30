@@ -414,13 +414,13 @@ cctest.update = () => {
         cctest.goods[id].profit = (good.val * bought) - (cctest.goods[id].value * bought);
         cctest.goods[id].lowval = good.val < cctest.goods[id].lowval ? good.val : cctest.goods[id].lowval;
         cctest.goods[id].highval = good.val > cctest.goods[id].highval ? good.val : cctest.goods[id].highval;
-		if (Math.abs(cctest.goods[id].delta-cctest.bank.minigame.goodDelta(id))<0.01) {
+		if (Math.abs(cctest.goods[id].delta-cctest.bank.minigame.goodDelta(id))>0.01) {
 			if(cctest.goods[id].delta*cctest.bank.minigame.goodDelta(id) >= 0)
 				cctest.goods[id].streak++;
 			else
 				cctest.goods[id].streak = 1;
+			cctest.goods[id].delta = cctest.bank.minigame.goodDelta(id);
 		}
-		cctest.goods[id].delta = cctest.bank.minigame.goodDelta(id);
 
 		if (cctest.automate == true )
 			cctest.automated(good,id);
