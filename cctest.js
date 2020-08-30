@@ -340,7 +340,7 @@ cctest.updateDisplay = (good,id) => {
 	profit.innerHTML = profitHTML;
 };
 
-cctest.automated(good,id) => {
+cctest.automated = (good,id) => {
 	let curgood = cctest.goods[id];
 	let range = curgood.highval-curgood.lowval;
 	let delta = good.val-curgood.value;
