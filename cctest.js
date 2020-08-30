@@ -312,7 +312,7 @@ cctest.updateDisplay = (good,id) => {
 		opac = 0.3;
 		color2 = "#405068";
 		profitHTML = cctest.formatPrice(curgood.profit,true);
-		if(delta <0) {
+		if(deltaval <0) {
 			width1 = (curgood.value-curgood.lowval)/range*100;
 			width2 = (good.val-curgood.lowval)/(curgood.value-curgood.lowval)*100;
 			color1 = "#f21e3c";
