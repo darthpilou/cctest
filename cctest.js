@@ -383,6 +383,8 @@ cctest.automated = (good,id) => {
 					sellgood =true;
 				if (deltaval/range > 0.25 &&  (cctest.goods[id].streak >2 || curgood.delta < -0.01))
 					sellgood =true;
+				if (deltaval/range > 0.1 &&  curgood.delta < -0.015)
+					sellgood =true;
 			}
 			if (sellgood == true) {
 				let _id = 'bankGood-'+ id +'_-All';
