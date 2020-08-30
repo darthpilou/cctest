@@ -419,8 +419,8 @@ cctest.update = () => {
 				cctest.goods[id].streak++;
 			else
 				cctest.goods[id].streak = 1;
-			cctest.goods[id].delta = cctest.bank.minigame.goodDelta(id);
 		}
+		cctest.goods[id].delta = cctest.bank.minigame.goodDelta(id);
 
 		if (cctest.automate == true )
 			cctest.automated(good,id);
