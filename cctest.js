@@ -341,7 +341,7 @@ cctest.updateDisplay = (good,id) => {
 					buy(0);
 					let today = new Date();
 					let time = today.getHours() + ":" + today.getMinutes();
-					console.log(time + " sold " + cctest.goods[id].name + " for " + good.val.toFixed(2).toString() + " profit:" + cctest.goods[id].profit.toFixed(0).toString() + "k" );
+					console.log(time + " sold " + cctest.goods[id].name + " for " + good.val.toFixed(2).toString() + " profit:" + profitHTML);
 				}
 			}
 		}
