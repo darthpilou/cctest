@@ -314,7 +314,7 @@ cctest.updateDisplay = (good,id) => {
 				buy(good.stock);
 				let today = new Date();
 				let time = today.getHours() + ":" + today.getMinutes();
-				console.log(time + " bought " + cctest.goods[id].name + " for " + cctest.formatPrice(good.val, false));
+				console.log(time + " bought " + cctest.goods[id].name + " for " + good.val.toFixed(2).toString());
 			}
 		}
 	}
@@ -341,7 +341,8 @@ cctest.updateDisplay = (good,id) => {
 					buy(0);
 					let today = new Date();
 					let time = today.getHours() + ":" + today.getMinutes();
-					console.log(time + " sold " + cctest.goods[id].name + " profit:" + profitHTML);
+					let prosmall = cctest.goods[id].profit/1000;
+					console.log(time + " sold " + cctest.goods[id].name + " for " + good.val.toFixed(2).toString() + " profit:" + prosmall.toFixed(0).toString() + "k" );
 				}
 			}
 		}
