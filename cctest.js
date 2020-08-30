@@ -391,12 +391,12 @@ cctest.automated = (good,id) => {
 					sellgood =true;
 			}
 			if (sellgood == true) {
-				let _id = 'bankGood-'+ id +'_-All';
-				document.getElementById(_id).click();
 				let today = new Date();
 				let time = today.getHours() + ":" + today.getMinutes();
 				let profit = curgood.profit/1000; 
 				console.log(time + " sold " + curgood.name + " for " + good.val.toFixed(2).toString() + " profit:" + profit.toFixed(0).toString() + "k");
+				let _id = 'bankGood-'+ id +'_-All';
+				document.getElementById(_id).click();
 				buy(0);
 			}
 		}
