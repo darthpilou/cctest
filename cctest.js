@@ -267,10 +267,6 @@ cctest.updateDisplay = (good,id) => {
 	let bar1 = row.querySelector('.cctest-bar1');
 	let bar2 = row.querySelector('.cctest-bar2');
 	let profit = row.querySelector('.cctest-profit');
-
-	let range = cctest.goods[id].highval-cctest.goods[id].lowval;
-	let ratio = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].highval-cctest.goods[id].lowval);
-
 	let width1 = 0;
 	let width2 = 0;
 	let color1 = "";
@@ -282,20 +278,20 @@ cctest.updateDisplay = (good,id) => {
 	let opac= 0.1;
 	let rowback = "transparent";
 	let profitHTML = "";
-	let dirchar = cctest.goods[id].up == true ? "►" : "◄";
+	let curgood = cctest.goods[id];
+	let range = curgood.highval-curgood.lowval;
+	let delta = good.val-curgood.value;
+	let ratio = (good.val-curgood.lowval)/range;
 
-	let buy = (b) => {
-		cctest.goods[id].bought = b;
-		cctest.goods[id].value = b == 0 ? 0 : good.val;
-	};
+	let dirchar = curgood.up == true ? "►" : "◄";
 
 	if(ratio < 0.5) 
 		offset = alignright;
 	else
 		offset = alignleft;
 	
-	if (cctest.goods[id].bought==0) {
-		width1 = (good.val-cctest.goods[id].lowval)/range*100;
+	if (curgood.bought==0) {
+		width1 = ratio*100;
 		width2 = 100-300/(width1+0.001);
 		color2 = "#0f141a";
 		colorprog = "#405068";
@@ -308,41 +304,25 @@ cctest.updateDisplay = (good,id) => {
 			opac=0.1;
 		if(ratio < 0.25 && range>30) {
 			rowback = "#3333FF"; 
-			if( cctest.automate == true && cctest.goods[id].up == true && cctest.goods[id].streak >1) {
-				let _id = 'bankGood-'+ id +'_Max';
-				document.getElementById(_id).click();
-				buy(good.stock);
-				let today = new Date();
-				let time = today.getHours() + ":" + today.getMinutes();
-				console.log(time + " bought " + cctest.goods[id].name + " for " + good.val.toFixed(2).toString());
-			}
 		}
 	}
 	else {
 		opac = 0.3;
 		color2 = "#405068";
-		profitHTML = cctest.formatPrice(cctest.goods[id].profit,true);
-		if(cctest.goods[id].value>good.val) {
-			width1 = (cctest.goods[id].value-cctest.goods[id].lowval)/range*100;
-			width2 = (good.val-cctest.goods[id].lowval)/(cctest.goods[id].value-cctest.goods[id].lowval)*100;
+		profitHTML = cctest.formatPrice(curgood.profit,true);
+		if(delta <0) {
+			width1 = (curgood.value-curgood.lowval)/range*100;
+			width2 = (good.val-curgood.lowval)/(curgood.value-curgood.lowval)*100;
 			color1 = "#f21e3c";
 		}
 		else {
 			opac = 0.5;
-			width1 = (good.val-cctest.goods[id].lowval)/range*100;
-			width2 = (cctest.goods[id].value-cctest.goods[id].lowval)/(good.val-cctest.goods[id].lowval)*100;
+			width1 = (good.val-curgood.lowval)/range*100;
+			width2 = (curgood.value-curgood.lowval)/(good.val-curgood.lowval)*100;
 			color1 = "#73f21e";
-			if (ratio > 0.5) {
+			if (delta/range > 0.25) {
 				opac = 1;
 				rowback = "#9933FF";
-				if( cctest.automate == true && cctest.goods[id].up == false && cctest.goods[id].streak >2 && cctest.goods[id].value < good.val) {
-					let _id = 'bankGood-'+ id +'_-All';
-					document.getElementById(_id).click();
-					buy(0);
-					let today = new Date();
-					let time = today.getHours() + ":" + today.getMinutes();
-					console.log(time + " sold " + cctest.goods[id].name + " for " + good.val.toFixed(2).toString() + " profit:" + profitHTML);
-				}
 			}
 		}
 	}
@@ -360,10 +340,69 @@ cctest.updateDisplay = (good,id) => {
 	profit.innerHTML = profitHTML;
 };
 
+cctest.automated(good,id) => {
+	let curgood = cctest.goods[id];
+	let range = curgood.highval-curgood.lowval;
+	let delta = good.val-curgood.value;
+	let ratio = good.val-curgood.lowval/range;
+
+	let buy = (b) => {
+		cctest.goods[id].bought = b;
+		cctest.goods[id].value = b == 0 ? 0 : good.val;
+	};
+
+	if (curgood.bought==0) {
+		let buygood = false; 
+		if(range>30) {
+			if ( Math.abs(good.val-curgood.lowval) <0.01 )
+				buygood = true;
+			if(curgood.up == true) {
+				if (ratio < 0.1)
+					buygood =true;
+				if (ratio < 0.25 && cctest.goods[id].streak >1) {
+					buygood =true;
+				}
+			}
+		}
+		if (buygood == true) {
+			let _id = 'bankGood-'+ id +'_Max';
+			document.getElementById(_id).click();
+			buy(good.stock);
+			let today = new Date();
+			let time = today.getHours() + ":" + today.getMinutes();
+			console.log(time + " bought " + cctest.goods[id].name + " for " + good.val.toFixed(2).toString());
+		}
+	}
+	else {
+		if(delta > 0) {
+			let sellgood = false;
+			if ( delta/range > 0.7)
+				sellgood = true;
+			if(curgood.up == false) {
+				if (delta/range > 0.55)
+					sellgood =true;
+				if (delta/range > 0.40 &&  cctest.goods[id].streak >1)
+					sellgood =true;
+				if (delta/range > 0.25 &&  cctest.goods[id].streak >2)
+					sellgood =true;
+			}
+			if (sellgood == true) {
+				let _id = 'bankGood-'+ id +'_-All';
+				document.getElementById(_id).click();
+				buy(0);
+				let today = new Date();
+				let time = today.getHours() + ":" + today.getMinutes();
+				console.log(time + " sold " + curgood.name + " for " + good.val.toFixed(2).toString() + " profit:" + curgood.profit.toFixed(0).toString());
+			}
+		}
+	}	
+	
+}
+
 cctest.update = () => {
     if (cctest.bank.amount == 0)
         cctest.initializeGoods();
-		cctest.minigameGoods.map((good, id) => {
+	cctest.minigameGoods.map((good, id) => {
         let bought = cctest.goods[id].bought;
         if (good.stock == 0)
             cctest.goods[id].bought = 0;
@@ -388,7 +427,9 @@ cctest.update = () => {
 			}
 			cctest.goods[id].previous = cur;
 		}
-
+		
+		if (cctest.automate == true )
+			cctest.automated(good,id);
 		cctest.updateDisplay(good,id);
     });
 
