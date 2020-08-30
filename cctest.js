@@ -204,8 +204,7 @@ cctest.initializeGoods = () => {
 		name: good.name,
 		lowval: 1000,
 		highval: 0,
-		previous: 0,
-		up: false,
+		delta: 0,
 		streak: 1,
 		bought: 0,
 		value: 0,
@@ -283,7 +282,7 @@ cctest.updateDisplay = (good,id) => {
 	let delta = good.val-curgood.value;
 	let ratio = (good.val-curgood.lowval)/range;
 
-	let dirchar = curgood.up == true ? "►" : "◄";
+	let dirchar = curgood.delta > 0 ? "►" : "◄";
 
 	if(ratio < 0.5) 
 		offset = alignright;
@@ -343,7 +342,7 @@ cctest.updateDisplay = (good,id) => {
 cctest.automated = (good,id) => {
 	let curgood = cctest.goods[id];
 	let range = curgood.highval-curgood.lowval;
-	let delta = good.val-curgood.value;
+	let deltaval = good.val-curgood.value;
 	let ratio = good.val-curgood.lowval/range;
 
 	let buy = (b) => {
@@ -356,12 +355,11 @@ cctest.automated = (good,id) => {
 		if(range>30) {
 			if ( Math.abs(good.val-curgood.lowval) <0.01 )
 				buygood = true;
-			if(curgood.up == true) {
+			if(curgood.delta > 0) {
 				if (ratio < 0.1)
 					buygood =true;
-				if (ratio < 0.25 && cctest.goods[id].streak >1) {
+				if (ratio < 0.25 && (cctest.goods[id].streak >1 || curgood.delta > 0.05 ))
 					buygood =true;
-				}
 			}
 		}
 		if (buygood == true) {
@@ -374,16 +372,16 @@ cctest.automated = (good,id) => {
 		}
 	}
 	else {
-		if(delta > 0) {
+		if(deltaval > 0) {
 			let sellgood = false;
-			if ( delta/range > 0.7)
+			if ( deltaval/range > 0.7)
 				sellgood = true;
-			if(curgood.up == false) {
-				if (delta/range > 0.55)
+			if(curgood.delta < 0) {
+				if (deltaval/range > 0.55)
 					sellgood =true;
-				if (delta/range > 0.40 &&  cctest.goods[id].streak >1)
+				if (deltaval/range > 0.40 &&  (cctest.goods[id].streak >1 || curgood.delta < -0.005))
 					sellgood =true;
-				if (delta/range > 0.25 &&  cctest.goods[id].streak >2)
+				if (deltaval/range > 0.25 &&  (cctest.goods[id].streak >2 || curgood.delta < -0.01))
 					sellgood =true;
 			}
 			if (sellgood == true) {
@@ -409,24 +407,11 @@ cctest.update = () => {
         cctest.goods[id].profit = (good.val * bought) - (cctest.goods[id].value * bought);
         cctest.goods[id].lowval = good.val < cctest.goods[id].lowval ? good.val : cctest.goods[id].lowval;
         cctest.goods[id].highval = good.val > cctest.goods[id].highval ? good.val : cctest.goods[id].highval;
-		let cur = Math.round(parseFloat(good.val)*100);
-		if( Math.abs(cctest.goods[id].previous-cur)>1) {
-			if(cctest.goods[id].previous > cur) {
-				if(cctest.goods[id].up == true)
-					cctest.goods[id].streak = 1;
-				else
-					cctest.goods[id].streak++;
-				cctest.goods[id].up = false;
-			}
-			else {
-				if(cctest.goods[id].up == false)
-					cctest.goods[id].streak = 1;
-				else
-					cctest.goods[id].streak++;
-				cctest.goods[id].up = true;
-			}
-			cctest.goods[id].previous = cur;
-		}
+		if(cctest.goods[id].delta/cctest.bank.minigame.goodDelta(id) > 0)
+			cctest.goods[id].streak++;
+		else
+			cctest.goods[id].streak = 1;
+		cctest.goods[id].delta = cctest.bank.minigame.goodDelta(id);
 		
 		if (cctest.automate == true )
 			cctest.automated(good,id);
