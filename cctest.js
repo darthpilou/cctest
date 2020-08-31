@@ -322,10 +322,17 @@ cctest.updateDisplay = (good,id) => {
 			width1 = (good.val-curgood.lowval)/range*100;
 			width2 = (curgood.value-curgood.lowval)/(good.val-curgood.lowval)*100;
 			color1 = "#73f21e";
-			if (deltaval/(curgood.highval-curgood.value) > curgood.threshold) {
+			let currange = curgood.highval-curgood.value;
+			if (deltaval/currange > curgood.threshold) {
 				opac = 1;
 				rowback = "#9933FF";
 			}
+			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)/4))
+				rowback = "#b366ff";
+			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)/2))
+				rowback = "#cc99ff";
+			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)*3/4))
+				rowback = "#e6ccff";
 		}
 	}
 	
