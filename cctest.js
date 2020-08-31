@@ -280,7 +280,6 @@ cctest.updateDisplay = (good,id) => {
 	let profitHTML = "";
 	let curgood = cctest.goods[id];
 	let range = curgood.highval-curgood.lowval;
-	let deltaval = good.val-curgood.value;
 	let ratio = (good.val-curgood.lowval)/range;
 
 	let dirchar = curgood.delta > 0 ? "►" : "◄";
@@ -312,7 +311,7 @@ cctest.updateDisplay = (good,id) => {
 		opac = 0.3;
 		color2 = "#405068";
 		profitHTML = cctest.formatPrice(curgood.profit,true);
-		if(deltaval <0) {
+		if(good.val-curgood.value <0) {
 			width1 = (curgood.value-curgood.lowval)/range*100;
 			width2 = (good.val-curgood.lowval)/(curgood.value-curgood.lowval)*100;
 			color1 = "#f21e3c";
@@ -322,16 +321,15 @@ cctest.updateDisplay = (good,id) => {
 			width1 = (good.val-curgood.lowval)/range*100;
 			width2 = (curgood.value-curgood.lowval)/(good.val-curgood.lowval)*100;
 			color1 = "#73f21e";
-			let currange = curgood.highval-curgood.value;
-			if (deltaval/currange > curgood.threshold) {
+			let lowthreshhold = 0.25 + (curgood.threshold-0.3)*0.75
+			let midthreshold = (curgood.threshold+lowthreshhold)/2
+			if (ratio > lowthreshhold) {
 				opac = 1;
 				rowback = "#9933FF";
 			}
-			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)/4)
-				rowback = "#b366ff";
-			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)/2)
+			if (ratio > midthreshold)
 				rowback = "#cc99ff";
-			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)*3/4)
+			if (ratio > curgood.threshold)
 				rowback = "#e6ccff";
 		}
 	}
@@ -352,7 +350,6 @@ cctest.updateDisplay = (good,id) => {
 cctest.automated = (good,id) => {
 	let curgood = cctest.goods[id];
 	let range = curgood.highval-curgood.lowval;
-	let deltaval = good.val-curgood.value;
 	let ratio = (good.val-curgood.lowval)/range;
 
 	let buy = (b) => {
@@ -382,17 +379,19 @@ cctest.automated = (good,id) => {
 		}
 	}
 	else {
-		let currange = curgood.highval-curgood.value;
-		if(deltaval > 0) {
+		if(good.val-curgood.value > 0) {
 			let sellgood = false;
-			if ( deltaval/currange > curgood.threshold+(1-curgood.threshold)*3/4)
+			let lowthreshhold = 0.25 + (curgood.threshold-0.3)*0.75
+			let midthreshold = (curgood.threshold+lowthreshhold)/2
+			
+			if (ratio > 0.99)
 				sellgood = true;
 			if(curgood.delta < 0) {
-				if (deltaval/currange > curgood.threshold+(1-curgood.threshold)/2)
+				if (ratio > curgood.threshold)
+					sellgood = true;
+				if (ratio > midthreshold &&  (curgood.streak >1 || curgood.delta < -5))
 					sellgood =true;
-				if ((deltaval/currange > curgood.threshold+(1-curgood.threshold)/4) &&  (curgood.streak >1 || curgood.delta < -5))
-					sellgood =true;
-				if ((deltaval/currange > curgood.threshold) &&  (curgood.streak >2 || curgood.delta < -10))
+				if (ratio > lowthreshold &&  (curgood.streak >2 || curgood.delta < -10))
 					sellgood =true;
 			}
 			if (sellgood == true) {
