@@ -362,15 +362,17 @@ cctest.automated = (good,id) => {
 		if ( curgood.threshold == 0) {
 			if (good.val < curgood.lowval+0.05*range)
 				buygood = true;
-		}	
-		if(range>30) {
-			if ( Math.abs(good.val-curgood.lowval) <0.01 )
-				buygood = true;
-			if(curgood.delta > 0) {
-				if (ratio < 0.1)
-					buygood =true;
-				if (ratio < 0.25 && (curgood.streak >1 || curgood.delta > 5 ))
-					buygood =true;
+		}
+		else {		
+			if(range>30) {
+				if ( Math.abs(good.val-curgood.lowval) <0.01 )
+					buygood = true;
+				if(curgood.delta > 0) {
+					if (ratio < 0.1)
+						buygood =true;
+					if (ratio < 0.25 && (curgood.streak >1 || curgood.delta > 5 ))
+						buygood =true;
+				}
 			}
 		}
 		if (buygood == true) {
@@ -389,8 +391,8 @@ cctest.automated = (good,id) => {
 			let midthreshold = (curgood.threshold+lowthreshold)/2
 			if (ratio > 0.99)
 				sellgood = true;
-			if ( curgood.threshold == 0)
-				if (good.val > curgood.lowval+0.1*range)
+			if ( curgood.threshold == 0) {
+				if (good.val-curgood.value > 10)
 					sellgood = true;
 			if(curgood.delta < 0) {
 				if ( curgood.threshold == 0) {
