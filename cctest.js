@@ -302,9 +302,9 @@ cctest.updateDisplay = (good,id) => {
 		color1 = "rgb(" + red.toFixed(0) + "," + green.toFixed(0)  + ", 0)";
 		if(range<30 || opac<0.1)
 			opac=0.1;
-		if(ratio < curgood.threshold && range>30) {
+		if(ratio < 0.25 && range>30) {
 			rowback = "#3333FF"; 
-			if(ratio < curgood.threshold/2)
+			if(ratio < 0.1)
 				rowback = "#6666FF"; 
 		}
 	}
@@ -322,7 +322,7 @@ cctest.updateDisplay = (good,id) => {
 			width1 = (good.val-curgood.lowval)/range*100;
 			width2 = (curgood.value-curgood.lowval)/(good.val-curgood.lowval)*100;
 			color1 = "#73f21e";
-			if (deltaval/(curgood.highval-curgood.value) > 0.25) {
+			if (deltaval/(curgood.highval-curgood.value) > curgood.threshold) {
 				opac = 1;
 				rowback = "#9933FF";
 			}
@@ -359,9 +359,9 @@ cctest.automated = (good,id) => {
 			if ( Math.abs(good.val-curgood.lowval) <0.01 )
 				buygood = true;
 			if(curgood.delta > 0) {
-				if (ratio < curgood.threshold*0.5)
+				if (ratio < 0.1)
 					buygood =true;
-				if (ratio < curgood.threshold && (curgood.streak >1 || curgood.delta > 5 ))
+				if (ratio < 0.25 && (curgood.streak >1 || curgood.delta > 5 ))
 					buygood =true;
 			}
 		}
@@ -378,16 +378,14 @@ cctest.automated = (good,id) => {
 		let currange = curgood.highval-curgood.value;
 		if(deltaval > 0) {
 			let sellgood = false;
-			if ( deltaval/currange > 0.7)
+			if ( deltaval/currange > curgood.threshold+(1-curgood.threshold)*3/4)
 				sellgood = true;
 			if(curgood.delta < 0) {
-				if (deltaval/currange > 0.55)
+				if (deltaval/currange > curgood.threshold+(1-curgood.threshold)/2)
 					sellgood =true;
-				if (deltaval/currange > 0.40 &&  (curgood.streak >1 || curgood.delta < -5))
+				if ((deltaval/currange > curgood.threshold+(1-curgood.threshold)/4) &&  (curgood.streak >1 || curgood.delta < -5))
 					sellgood =true;
-				if (deltaval/currange > 0.25 &&  (curgood.streak >2 || curgood.delta < -10))
-					sellgood =true;
-				if (deltaval/currange > 0.1 &&  curgood.delta < -15)
+				if ((deltaval/currange > curgood.threshold) &&  (curgood.streak >2 || curgood.delta < -10))
 					sellgood =true;
 			}
 			if (sellgood == true) {
