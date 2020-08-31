@@ -389,7 +389,7 @@ cctest.automated = (good,id) => {
 			let midthreshold = (curgood.threshold+lowthreshold)/2
 			if (ratio > 0.99)
 				sellgood = true;
-			if ( curgood.threshold == 0) {
+			if ( curgood.threshold == 0)
 				if (good.val-curgood.value > 10)
 					sellgood = true;
 			if(curgood.delta < 0) {
