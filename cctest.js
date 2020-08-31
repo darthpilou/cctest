@@ -321,9 +321,9 @@ cctest.updateDisplay = (good,id) => {
 			width1 = (good.val-curgood.lowval)/range*100;
 			width2 = (curgood.value-curgood.lowval)/(good.val-curgood.lowval)*100;
 			color1 = "#73f21e";
-			let lowthreshhold = 0.25 + (curgood.threshold-0.3)*0.75
-			let midthreshold = (curgood.threshold+lowthreshhold)/2
-			if (ratio > lowthreshhold) {
+			let lowthreshold = 0.25 + (curgood.threshold-0.3)*0.75
+			let midthreshold = (curgood.threshold+lowthreshold)/2
+			if (ratio > lowthreshold) {
 				opac = 1;
 				rowback = "#9933FF";
 			}
@@ -381,8 +381,8 @@ cctest.automated = (good,id) => {
 	else {
 		if(good.val-curgood.value > 0) {
 			let sellgood = false;
-			let lowthreshhold = 0.25 + (curgood.threshold-0.3)*0.75
-			let midthreshold = (curgood.threshold+lowthreshhold)/2
+			let lowthreshold = 0.25 + (curgood.threshold-0.3)*0.75
+			let midthreshold = (curgood.threshold+lowthreshold)/2
 			
 			if (ratio > 0.99)
 				sellgood = true;
