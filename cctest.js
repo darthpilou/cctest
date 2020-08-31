@@ -390,16 +390,17 @@ cctest.automated = (good,id) => {
 			if ( curgood.threshold == 0) {
 				if (good.val-curgood.value > 3)
 					sellgood = true;
-			}	
-			if (ratio > 0.99)
-				sellgood = true;
-			if(curgood.delta < 0) {
-				if (ratio > curgood.threshold)
+			} else {	
+				if (ratio > 0.99)
 					sellgood = true;
-				if (ratio > midthreshold &&  (curgood.streak >1 || curgood.delta < -5))
-					sellgood =true;
-				if (ratio > lowthreshold &&  (curgood.streak >2 || curgood.delta < -10))
-					sellgood =true;
+				if(curgood.delta < 0) {
+					if (ratio > curgood.threshold)
+						sellgood = true;
+					if (ratio > midthreshold &&  (curgood.streak >1 || curgood.delta < -5))
+						sellgood =true;
+					if (ratio > lowthreshold &&  (curgood.streak >2 || curgood.delta < -10))
+						sellgood =true;
+				}
 			}
 			if (sellgood == true) {
 				let today = new Date();
