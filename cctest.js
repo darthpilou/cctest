@@ -359,7 +359,7 @@ cctest.automated = (good,id) => {
 
 	if (curgood.bought==0) {
 		let buygood = false;
-		if ( curgood.threshold = 0) {
+		if ( curgood.threshold == 0) {
 			if (good.val < curgood.lowval+0.05*range)
 				buygood = true;
 		}	
@@ -387,7 +387,7 @@ cctest.automated = (good,id) => {
 			let sellgood = false;
 			let lowthreshold = 0.25 + (curgood.threshold-0.3)*0.75
 			let midthreshold = (curgood.threshold+lowthreshold)/2
-			if ( curgood.threshold = 0) {
+			if ( curgood.threshold == 0) {
 				if (good.val-curgood.value > 3)
 					buygood = true;
 			}	
