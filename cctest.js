@@ -327,11 +327,11 @@ cctest.updateDisplay = (good,id) => {
 				opac = 1;
 				rowback = "#9933FF";
 			}
-			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)/4))
+			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)/4)
 				rowback = "#b366ff";
-			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)/2))
+			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)/2)
 				rowback = "#cc99ff";
-			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)*3/4))
+			if (deltaval/currange > curgood.threshold+(1-curgood.threshold)*3/4)
 				rowback = "#e6ccff";
 		}
 	}
