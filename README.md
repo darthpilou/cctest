@@ -9,7 +9,7 @@ Selling is when profit would be made and current value is higher than this good 
 
 To install with TamperMonkey, use the following:
 
-'''javascript
+```javascript
 {
 // ==UserScript==
 // @name         EZStocks
@@ -33,11 +33,14 @@ var code = "(" + (function() {
 
 window.eval(code);
 }
+```
+
 Or paste the following into the url field for a bookmark.
 
-'''javascript
+```javascript
 {
 javascript:(function() {
     Game.LoadMod('https://darthpilou.github.io/cctest/cctest.js');
 }());
 }
+```
