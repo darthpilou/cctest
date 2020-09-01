@@ -320,7 +320,7 @@ cctest.updateDisplay = (good,id) => {
 			width1 = (good.val-curgood.lowval)/range*100;
 			width2 = (curgood.value-curgood.lowval)/(good.val-curgood.lowval)*100;
 			color1 = "#73f21e";
-			if (good.val > (10*(id+1)+9) && good.val > curgood.value) {
+			if (good.val > (10*(id+1)+Game.Objects['Bank'].level-1) && good.val > curgood.value) {
 				opac = 1;
 				rowback = "#9933FF";
 			}
@@ -374,7 +374,7 @@ cctest.automated = (good,id) => {
 	else {
 		if(good.val-curgood.value > 0) {
 			let sellgood = false;
-			if (good.val > 10*(id+1)+9)
+			if (good.val > Game.Objects['Bank'].level-1)
 				sellgood = true;
 			if(curgood.delta < 0) {
 				if (curgood.streak >2 || curgood.delta < -10)
