@@ -1,4 +1,4 @@
-// this mod is heavily based on a mod by Nykilho found here: https://github.com/Nyhilo/KookieStocks
+// this mod is heavily based on a mod by Silentclowd found here: https://github.com/Nyhilo/KookieStocks
 
 let cctest = {
     setCookie: (cname, cvalue, exdays) => {
