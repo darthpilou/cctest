@@ -1,3 +1,5 @@
+// this mod is heavily based on a mod by Nykilho found here: https://github.com/Nyhilo/KookieStocks
+
 let cctest = {
     setCookie: (cname, cvalue, exdays) => {
         var d = new Date();
