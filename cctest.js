@@ -206,7 +206,6 @@ cctest.initializeGoods = () => {
 		highval: 0,
 		delta: 0,
 		streak: 1,
-		threshold: 0.25,
 		bought: 0,
 		value: 0,
 		profit: 0,
@@ -323,14 +322,10 @@ cctest.updateDisplay = (good,id) => {
 			color1 = "#73f21e";
 			let lowthreshold = 0.25 + (curgood.threshold-0.3)*0.75
 			let midthreshold = (curgood.threshold+lowthreshold)/2
-			if (ratio > lowthreshold) {
+			if (good.val > (10*(id+1)+9 && good.val > curgood.value) {
 				opac = 1;
 				rowback = "#9933FF";
 			}
-			if (ratio > midthreshold)
-				rowback = "#cc99ff";
-			if (ratio > curgood.threshold)
-				rowback = "#e6ccff";
 		}
 	}
 	
@@ -359,20 +354,14 @@ cctest.automated = (good,id) => {
 
 	if (curgood.bought==0) {
 		let buygood = false;
-		if ( curgood.threshold == 0) {
-			if (good.val < curgood.lowval+0.05*range)
+		if(range>30) {
+			if ( Math.abs(good.val-curgood.lowval) <0.01 )
 				buygood = true;
-		}
-		else {		
-			if(range>30) {
-				if ( Math.abs(good.val-curgood.lowval) <0.01 )
-					buygood = true;
-				if(curgood.delta > 0) {
-					if (ratio < 0.1)
-						buygood =true;
-					if (ratio < 0.25 && (curgood.streak >1 || curgood.delta > 5 ))
-						buygood =true;
-				}
+			if(curgood.delta > 0) {
+				if (ratio < 0.1)
+					buygood =true;
+				if (ratio < 0.25 && (curgood.streak >1 || curgood.delta > 5 ))
+					buygood =true;
 			}
 		}
 		if (buygood == true) {
@@ -387,25 +376,11 @@ cctest.automated = (good,id) => {
 	else {
 		if(good.val-curgood.value > 0) {
 			let sellgood = false;
-			let lowthreshold = 0.25 + (curgood.threshold-0.3)*0.75
-			let midthreshold = (curgood.threshold+lowthreshold)/2
-			if (ratio > 0.99)
+			if (good.val > 10*(id+1)+9)
 				sellgood = true;
-			if ( curgood.threshold == 0)
-				if (good.val-curgood.value > 10)
-					sellgood = true;
 			if(curgood.delta < 0) {
-				if ( curgood.threshold == 0) {
-					if (good.val-curgood.value > 3)
-						sellgood = true;
-				} else {	
-					if (ratio > curgood.threshold)
-						sellgood = true;
-					if (ratio > midthreshold &&  (curgood.streak >1 || curgood.delta < -5))
-						sellgood =true;
-					if (ratio > lowthreshold &&  (curgood.streak >2 || curgood.delta < -10))
-						sellgood =true;
-				}
+				if (curgood.streak >2 || curgood.delta < -10)
+					sellgood =true;
 			}
 			if (sellgood == true) {
 				let today = new Date();
