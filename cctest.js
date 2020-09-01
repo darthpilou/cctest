@@ -442,7 +442,6 @@ cctest.minigameGoods.map((good, id) => {
     let buy = (bought) => {
         cctest.goods[id].bought = bought;
         cctest.goods[id].value = bought == 0 ? 0 : good.val;
-        cctest.update();
     };
 
     let buttons = ['1','10','100','Max','-1','-10','-100','-All'];
