@@ -273,9 +273,7 @@ cctest.updateDisplay = (good,id) => {
 	let color1 = "";
 	let color2 = "";
 	let colorprog = "transparent";
-	let alignleft = "&nbsp;&nbsp;&nbsp;&nbsp;";
-	let alignright = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-	let offset = "";
+	let offset = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 	let opac= 0.1;
 	let rowback = "transparent";
 	let profitHTML = "";
@@ -285,11 +283,6 @@ cctest.updateDisplay = (good,id) => {
 
 	let dirchar = curgood.delta > 0 ? "►" : "◄";
 
-	if(ratio < 0.5) 
-		offset = alignright;
-	else
-		offset = alignleft;
-	
 	if (curgood.bought==0) {
 		width1 = ratio*100;
 		width2 = 100-300/(width1+0.001);
