@@ -344,7 +344,6 @@ cctest.automated = (good,id) => {
 	let _id = "";
 
 	if (curgood.bought==0) {
-					  
 		if(range>30) {
 			if ( Math.abs(good.val-curgood.lowval) <0.01 )
 				buysell = true;
@@ -356,16 +355,12 @@ cctest.automated = (good,id) => {
 			}
 		}
 		if (buysell == true) {
-						  
-														  
-			msg = " bought " + curgood.name + " for " + good.val.toFixed(2).toString();
+			msg = " autobought " + curgood.name + " for " + good.val.toFixed(2).toString();
 			_id = 'bankGood-'+ id +'_Max';
-										
 		}
 	}
 	else {
 		if(good.val-curgood.value > 0) {
-						
 			let settle = id*10+Game.Objects['Bank'].level-1;
 			if (good.val > settle)
 				buysell = true;
@@ -376,12 +371,9 @@ cctest.automated = (good,id) => {
 					buysell =true;
 			}
 			if (buysell == true) {
-						   
-														   
 				let profit = (good.val * curgood.bought) - (cctest.goods[id].value * curgood.bought)/1000; 
-				msg = " sold " + curgood.name + " for " + good.val.toFixed(2).toString() + " profit:" + profit.toFixed(0).toString() + "k";
+				msg = " autosold " + curgood.name + " for " + good.val.toFixed(2).toString() + " profit:" + profit.toFixed(0).toString() + "k";
 				_id = 'bankGood-'+ id +'_-All';
-										 
 			}
 		}
 	}
@@ -439,7 +431,7 @@ cctest.minigameGoods.map((good, id) => {
     let buy = () => {
 		let curgood = cctest.goods[id];
 		console.log("before stock:" + good.stock + " bought:" + curgood.bought + " value:" + curgood.value);
-		if (good.stock != curgood.bought) {
+		if (good.stock !=  curgood.bought) {
 			if( good.stock > curgood.bought ) {
 				let newavg = (curgood.bought*curgood.value + (good.stock-curgood.bought)*good.val)/good.stock;
 				curgood.value = newavg;
