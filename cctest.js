@@ -444,10 +444,9 @@ cctest.minigameGoods.map((good, id) => {
 				let newavg = (curgood.bought*curgood.value + (good.stock-curgood.bought)*good.val)/good.stock;
 				curgood.value = newavg;
 			}
-			else {
-				curgood.value = good.val;
-			}
 			curgood.bought = good.stock;
+			if (good.stock == 0)
+				curgood.value = 0;
 		}
 		console.log("after stock:" + good.stock + " bought:" + curgood.bought + " value:" + curgood.value);
     };
