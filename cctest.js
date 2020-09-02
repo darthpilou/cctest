@@ -316,9 +316,10 @@ cctest.updateDisplay = (good,id) => {
 			width1 = (good.val-curgood.lowval)/range*100;
 			width2 = (curgood.value-curgood.lowval)/(good.val-curgood.lowval)*100;
 			color1 = "#73f21e";
-			if (good.val>settle)
+			if (good.val>settle) {
 				opac = 1;
 				rowback = "#9933FF";
+			}
 		}
 	}
 	
