@@ -438,7 +438,7 @@ cctest.initializeGoods();
 cctest.minigameGoods.map((good, id) => {
     let buy = () => {
 		let curgood = cctest.goods[id];
-		console.log("before stock:" + good.stock + " bought:" + curgood.bought + " value:" + curgood.value;
+		console.log("before stock:" + good.stock + " bought:" + curgood.bought + " value:" + curgood.value);
 		if (good.stock <> curgood.bought) {
 			if( good.stock > curgood.bought ) {
 				let newavg = (curgood.bought*curgood.value + (good.stock-curgood.bought)*good.val)/good.stock;
@@ -449,7 +449,7 @@ cctest.minigameGoods.map((good, id) => {
 			}
 			curgood.bought = good.stock;
 		}
-		console.log("after stock:" + good.stock + " bought:" + curgood.bought + " value:" + curgood.value;
+		console.log("after stock:" + good.stock + " bought:" + curgood.bought + " value:" + curgood.value);
     };
 
     let buttons = ['1','10','100','Max','-1','-10','-100','-All'];
