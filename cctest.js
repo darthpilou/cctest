@@ -439,7 +439,7 @@ cctest.minigameGoods.map((good, id) => {
     let buy = () => {
 		let curgood = cctest.goods[id];
 		console.log("before stock:" + good.stock + " bought:" + curgood.bought + " value:" + curgood.value);
-		if (good.stock <> curgood.bought) {
+		if (good.stock != curgood.bought) {
 			if( good.stock > curgood.bought ) {
 				let newavg = (curgood.bought*curgood.value + (good.stock-curgood.bought)*good.val)/good.stock;
 				curgood.value = newavg;
