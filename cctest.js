@@ -371,7 +371,7 @@ cctest.automated = (good,id) => {
 					buysell =true;
 			}
 			if (buysell == true) {
-				let profit = (good.val * curgood.bought) - (cctest.goods[id].value * curgood.bought)/1000; 
+				let profit = ((good.val * curgood.bought) - (cctest.goods[id].value * curgood.bought))/1000; 
 				msg = " autosold " + curgood.name + " for " + good.val.toFixed(2).toString() + " profit:" + profit.toFixed(0).toString() + "k";
 				_id = 'bankGood-'+ id +'_-All';
 			}
