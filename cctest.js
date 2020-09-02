@@ -333,11 +333,11 @@ cctest.updateDisplay = (good,id) => {
 	if ( curgood.value > 0 ) 
 		bar2.innerHTML = offset + cctest.formatPrice(curgood.value, false);
 	else
-		bar2.innerHTML = "";
+		bar2.innerHTML = offset;
 	low.innerHTML = cctest.formatPrice(curgood.lowval, false);
 	high.innerHTML = cctest.formatPrice(curgood.highval, false);
 	profitbar.innerHTML = profitHTML;
-	move = dirchar;
+	move.innerHTML = dirchar;
 };
 
 cctest.automated = (good,id) => {
