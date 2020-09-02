@@ -339,49 +339,58 @@ cctest.automated = (good,id) => {
 	let curgood = cctest.goods[id];
 	let range = curgood.highval-curgood.lowval;
 	let ratio = (good.val-curgood.lowval)/range;
+	let buysell = false;
+	let msg = "";
+	let _id = "";
 
 	if (curgood.bought==0) {
-		let buygood = false;
+					  
 		if(range>30) {
 			if ( Math.abs(good.val-curgood.lowval) <0.01 )
-				buygood = true;
+				buysell = true;
 			if(curgood.delta > 0) {
 				if (ratio < 0.1)
-					buygood =true;
+					buysell =true;
 				if (ratio < 0.25 && (curgood.streak >1 || curgood.delta > 5 ))
-					buygood =true;
+					buysell =true;
 			}
 		}
-		if (buygood == true) {
-			let today = new Date();
-			let time = today.getHours() + ":" + today.getMinutes();
-			console.log(time + " bought " + cctest.goods[id].name + " for " + good.val.toFixed(2).toString());
-			let _id = 'bankGood-'+ id +'_Max';
-			document.getElementById(_id).click();
+		if (buysell == true) {
+						  
+														  
+			msg = " bought " + curgood.name + " for " + good.val.toFixed(2).toString();
+			_id = 'bankGood-'+ id +'_Max';
+										
 		}
 	}
 	else {
 		if(good.val-curgood.value > 0) {
-			let sellgood = false;
+						
 			let settle = id*10+Game.Objects['Bank'].level-1;
 			if (good.val > settle)
-				sellgood = true;
+				buysell = true;
 			if(curgood.delta < 0) {
 				if (good.val>(settle-curgood.value)*0.8+curgood.value && (curgood.streak >1 || curgood.delta < -5))
-					sellgood =true;
+					buysell =true;
 				if (good.val>(settle-curgood.value)*0.6+curgood.value && (curgood.streak >2 || curgood.delta < -10))
-					sellgood =true;
+					buysell =true;
 			}
-			if (sellgood == true) {
-				let today = new Date();
-				let time = today.getHours() + ":" + today.getMinutes();
+			if (buysell == true) {
+						   
+														   
 				let profit = (good.val * curgood.bought) - (cctest.goods[id].value * curgood.bought)/1000; 
-				console.log(time + " sold " + curgood.name + " for " + good.val.toFixed(2).toString() + " profit:" + profit.toFixed(0).toString() + "k");
-				let _id = 'bankGood-'+ id +'_-All';
-				document.getElementById(_id).click();
+				msg = " sold " + curgood.name + " for " + good.val.toFixed(2).toString() + " profit:" + profit.toFixed(0).toString() + "k";
+				_id = 'bankGood-'+ id +'_-All';
+										 
 			}
 		}
-	}	
+	}
+	if ( buysell == true) {
+		let today = new Date();
+		let time = today.getHours() + ":" + today.getMinutes();
+		console.log(time + msg);
+		document.getElementById(_id).click();
+	}
 	
 }
 
@@ -427,10 +436,20 @@ cctest.resetThresholds = () => {
 cctest.initializeGoods();
 
 cctest.minigameGoods.map((good, id) => {
-    let buy = (b) => {
-		console.log(" stock:" + good.stock + " bought:" + cctest.goods[id].bought + " b:" + b);
-        cctest.goods[id].bought = b;
-        cctest.goods[id].value = b == 0 ? 0 : good.val;
+    let buy = () => {
+		let curgood = cctest.goods[id];
+		console.log("before stock:" + good.stock + " bought:" + curgood.bought + " value:" + curgood.value;
+		if (good.stock <> curgood.bought) {
+			if( good.stock > curgood.bought ) {
+				let newavg = (curgood.bought*curgood.value + (good.stock-curgood.bought)*good.val)/good.stock;
+				curgood.value = newavg;
+			}
+			else {
+				curgood.value = good.val;
+			}
+			curgood.bought = good.stock;
+		}
+		console.log("after stock:" + good.stock + " bought:" + curgood.bought + " value:" + curgood.value;
     };
 
     let buttons = ['1','10','100','Max','-1','-10','-100','-All'];
@@ -438,7 +457,7 @@ cctest.minigameGoods.map((good, id) => {
         let _id = 'bankGood-' + id + '_' + b;
         document.getElementById(_id)
             .addEventListener('click', () => {
-                buy(b > good.stock ? b : good.stock);
+                buy();
             });
     });
 });
