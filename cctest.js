@@ -384,8 +384,10 @@ cctest.automated = (good,id) => {
 	if ( buysell == true) {
 		let today = new Date();
 		let time = today.getHours() + ":" + today.getMinutes();
-		console.log(time + msg);
+		let prevbought = curgood.bought;
 		document.getElementById(_id).click();
+		if ( curgood.bought != prevbought)
+			console.log(time + msg);
 	}
 	
 }
