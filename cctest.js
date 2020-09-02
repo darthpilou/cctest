@@ -297,7 +297,7 @@ cctest.updateDisplay = (good,id) => {
 		color1 = "rgb(" + red.toFixed(0) + "," + green.toFixed(0)  + ", 0)";
 		if(range<30 || opac<0.1)
 			opac=0.1;
-		if (good.val < (0.4+0.02*id)*settle && (curgood.streak >2 || curgood.delta > 10 ))
+		if (good.val < (0.4+0.02*id)*settle)
 			rowback = "#3333FF"; 
 		if (good.val < (0.2+0.02*id)*settle)
 			rowback = "#6666FF"; 
