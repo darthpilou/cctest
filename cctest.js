@@ -261,6 +261,9 @@ cctest.formatPrice = (val, colored) => {
 
 cctest.updateDisplay = (good,id) => {
 	let row = document.getElementById('cctestTable').querySelector(`#cctest-${id}`);
+	let curgood = cctest.goods[id];
+	let range = curgood.highval-curgood.lowval;
+	let ratio = (good.val-curgood.lowval)/range;
 	let low = row.querySelector('.cctest-low');
 	let high = row.querySelector('.cctest-high');
 	let progress = row.querySelector('.cctest-progress');
@@ -277,9 +280,6 @@ cctest.updateDisplay = (good,id) => {
 	let opac= 0.1;
 	let rowback = "transparent";
 	let profitHTML = "";
-	let curgood = cctest.goods[id];
-	let range = curgood.highval-curgood.lowval;
-	let ratio = (good.val-curgood.lowval)/range;
 
 	let dirchar = curgood.delta > 0 ? "►" : "◄";
 
