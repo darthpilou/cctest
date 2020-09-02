@@ -281,6 +281,7 @@ cctest.updateDisplay = (good,id) => {
 	let opac= 0.1;
 	let rowback = "transparent";
 	let profitHTML = "";
+	let settle = (id+1)*10+Game.Objects['Bank'].level-1;
 
 	let dirchar = curgood.delta > 0 ? "►" : "◄";
 
@@ -296,11 +297,10 @@ cctest.updateDisplay = (good,id) => {
 		color1 = "rgb(" + red.toFixed(0) + "," + green.toFixed(0)  + ", 0)";
 		if(range<30 || opac<0.1)
 			opac=0.1;
-		if(ratio < 0.25 && range>30) {
+		if (good.val < (0.4+0.02*id)*settle && (curgood.streak >2 || curgood.delta > 10 ))
 			rowback = "#3333FF"; 
-			if(ratio < 0.1)
-				rowback = "#6666FF"; 
-		}
+		if (good.val < (0.2+0.02*id)*settle)
+			rowback = "#6666FF"; 
 	}
 	else {
 		opac = 0.3;
@@ -316,10 +316,9 @@ cctest.updateDisplay = (good,id) => {
 			width1 = (good.val-curgood.lowval)/range*100;
 			width2 = (curgood.value-curgood.lowval)/(good.val-curgood.lowval)*100;
 			color1 = "#73f21e";
-			if (good.val > (10*(id+1)+Game.Objects['Bank'].level-1) && good.val > curgood.value) {
+			if (good.val>settle)
 				opac = 1;
 				rowback = "#9933FF";
-			}
 		}
 	}
 	
@@ -343,19 +342,19 @@ cctest.updateDisplay = (good,id) => {
 cctest.automated = (good,id) => {
 	let curgood = cctest.goods[id];
 	let range = curgood.highval-curgood.lowval;
-	let ratio = (good.val-curgood.lowval)/range;
 	let buysell = false;
 	let msg = "";
 	let _id = "";
+	let settle = (id+1)*10+Game.Objects['Bank'].level-1;
 
 	if (curgood.bought==0) {
 		if(range>30) {
 			if ( Math.abs(good.val-curgood.lowval) <0.01 )
 				buysell = true;
 			if(curgood.delta > 0) {
-				if (ratio < 0.1)
+				if (good.val < (0.2+0.02*id)*settle)
 					buysell =true;
-				if (ratio < 0.25 && (curgood.streak >1 || curgood.delta > 5 ))
+				if (good.val < (0.4+0.02*id)*settle && (curgood.streak >2 || curgood.delta > 10 ))
 					buysell =true;
 			}
 		}
@@ -366,13 +365,12 @@ cctest.automated = (good,id) => {
 	}
 	else {
 		if(good.val-curgood.value > 0) {
-			let settle = id*10+Game.Objects['Bank'].level-1;
-			if (good.val > settle)
+			if (Math.abs(good.val-curgood.highval) < 0.01)
 				buysell = true;
 			if(curgood.delta < 0) {
-				if (good.val>(settle-curgood.value)*0.8+curgood.value && (curgood.streak >1 || curgood.delta < -5))
+				if (good.val>settle+10)
 					buysell =true;
-				if (good.val>(settle-curgood.value)*0.6+curgood.value && (curgood.streak >2 || curgood.delta < -10))
+				if (good.val>settle && (curgood.streak >1 || curgood.delta < -5))
 					buysell =true;
 			}
 			if (buysell == true) {
