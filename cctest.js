@@ -297,9 +297,9 @@ cctest.updateDisplay = (good,id) => {
 		color1 = "rgb(" + red.toFixed(0) + "," + green.toFixed(0)  + ", 0)";
 		if(range<30 || opac<0.1)
 			opac=0.1;
-		if (good.val < (0.4+0.02*id)*settle)
+		if (good.val < (0.3+0.02*id)*settle)
 			rowback = "#3333FF"; 
-		if (good.val < (0.2+0.02*id)*settle)
+		if (good.val < (0.15+0.02*id)*settle)
 			rowback = "#6666FF"; 
 	}
 	else {
@@ -353,9 +353,9 @@ cctest.automated = (good,id) => {
 			if ( Math.abs(good.val-curgood.lowval) <0.01 )
 				buysell = true;
 			if(curgood.delta > 0) {
-				if (good.val < (0.2+0.02*id)*settle)
+				if (good.val < (0.15+0.02*id)*settle)
 					buysell =true;
-				if (good.val < (0.4+0.02*id)*settle && (curgood.streak >2 || curgood.delta > 10 ))
+				if (good.val < (0.3+0.02*id)*settle && (curgood.streak >2 || curgood.delta > 10 ))
 					buysell =true;
 			}
 		}
