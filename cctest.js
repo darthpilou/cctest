@@ -192,6 +192,14 @@ let cctest = {
             <td><span class="cctest-move"></span></td>
             <td><span class="cctest-profit">$0.00</span></td>
         </tr>
+        <tr id="cctest-15" style="opacity:.4">
+            <td>SBD</td>
+            <td class="cctest-ba"><span class="cctest-low">$0.00</span></td><td>&nbsp;</td>
+            <td><div class="cctest-progress"><div class="cctest-bar1"><div class="cctest-bar2">&nbsp;</div></div></div></td>
+            <td><span class="cctest-high">$0.00</span></td>
+            <td><span class="cctest-move"></span></td>
+            <td><span class="cctest-profit">$0.00</span></td>
+        </tr>
     </table>
 </div>
 `
